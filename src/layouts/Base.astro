@@ -1,0 +1,124 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Make local LLMs punch above their weight. Intelligent scaffolding for AI coding assistants.' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:site_name" content="Context Mirror" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <title>{title}</title>
+</head>
+<body class="bg-surface-950 text-surface-50 font-sans antialiased">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-surface-950/80 backdrop-blur-xl">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 text-lg font-bold tracking-tight">
+        <img src="/logo-dark.svg" alt="" class="h-8 w-8" />
+        Context Mirror
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-surface-200">
+        <a href="/#features" class="hover:text-white transition-colors">Features</a>
+        <a href="/voice-mirror/" class="hover:text-white transition-colors">Voice Mirror</a>
+        <a href="/docs/introduction/" class="hover:text-white transition-colors">Docs</a>
+        <a href="/blog/" class="hover:text-white transition-colors">Blog</a>
+        <a href="https://github.com/contextmirror" class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-500 transition-colors">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-surface-200 hover:text-white">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 px-6 py-4 space-y-3">
+      <a href="/#features" class="block text-sm text-surface-200 hover:text-white">Features</a>
+      <a href="/voice-mirror/" class="block text-sm text-surface-200 hover:text-white">Voice Mirror</a>
+      <a href="/docs/introduction/" class="block text-sm text-surface-200 hover:text-white">Docs</a>
+      <a href="/blog/" class="block text-sm text-surface-200 hover:text-white">Blog</a>
+    </div>
+  </nav>
+
+  <main class="pt-[73px]">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 bg-surface-950">
+    <div class="mx-auto max-w-7xl px-6 py-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="col-span-2 md:col-span-1">
+          <a href="/" class="flex items-center gap-3 text-lg font-bold">
+            <img src="/logo-dark.svg" alt="" class="h-8 w-8" />
+            Context Mirror
+          </a>
+          <p class="mt-4 text-sm text-surface-200 leading-relaxed">
+            Making local LLMs punch above their weight.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Products</h4>
+          <ul class="space-y-2 text-sm text-surface-200">
+            <li><a href="/#features" class="hover:text-white transition-colors">Context Mirror</a></li>
+            <li><a href="/voice-mirror/" class="hover:text-white transition-colors">Voice Mirror</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Resources</h4>
+          <ul class="space-y-2 text-sm text-surface-200">
+            <li><a href="/docs/introduction/" class="hover:text-white transition-colors">Documentation</a></li>
+            <li><a href="/blog/" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="/changelog/" class="hover:text-white transition-colors">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-white mb-4">Community</h4>
+          <ul class="space-y-2 text-sm text-surface-200">
+            <li><a href="https://github.com/contextmirror" class="hover:text-white transition-colors">GitHub</a></li>
+            <li><a href="mailto:contextmirror@proton.me" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-white/5 text-sm text-surface-700">
+        &copy; {new Date().getFullYear()} Context Mirror. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

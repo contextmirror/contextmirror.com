@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={`${post.data.title} — Context Mirror`} description={post.data.description}>
+  <article class="py-24">
+    <div class="mx-auto max-w-3xl px-6">
+      <a href="/blog/" class="text-sm text-primary-400 hover:text-primary-300 transition-colors">&larr; Back to Blog</a>
+      <time class="block mt-6 text-sm text-surface-700">
+        {new Date(post.data.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+      <h1 class="mt-2 text-4xl md:text-5xl font-bold tracking-tight">{post.data.title}</h1>
+      {post.data.author && <p class="mt-2 text-surface-200">By {post.data.author}</p>}
+
+      <div class="mt-12 prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-primary-400 prose-code:text-primary-300">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>
