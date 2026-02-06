@@ -2,11 +2,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://contextmirror.com',
   integrations: [
+    react(),
     starlight({
       title: 'Context Mirror',
       logo: {
@@ -14,9 +16,6 @@ export default defineConfig({
         dark: './src/assets/logo-dark.svg',
         replacesTitle: false,
       },
-      social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/contextmirror' },
-      ],
       customCss: ['./src/styles/global.css'],
       sidebar: [
         {
@@ -42,6 +41,9 @@ export default defineConfig({
       ],
       components: {
         Head: './src/components/Head.astro',
+        Header: './src/components/Header.astro',
+        ThemeSelect: './src/components/ThemeSelect.astro',
+        Search: './src/components/Search.astro',
       },
     }),
   ],

@@ -7,3 +7,89 @@ import Default from '@astrojs/starlight/components/Head.astro';
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script is:inline>
+  // Force dark theme on Starlight docs
+  document.documentElement.dataset.theme = 'dark';
+  localStorage.setItem('starlight-theme', 'dark');
+</script>
+<style is:inline>
+  /* Fix Expressive Code blocks — inline to bypass Tailwind v4 processing */
+  .expressive-code {
+    display: block !important;
+    margin: 1.5rem 0 !important;
+    position: relative !important;
+  }
+  .expressive-code .frame {
+    display: block !important;
+    position: relative !important;
+    border-radius: 0.5rem !important;
+    overflow: hidden !important;
+  }
+  .expressive-code .frame .header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.4rem 1rem !important;
+    background: #1c1917 !important;
+    border: 1px solid #292524 !important;
+    border-bottom: none !important;
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+    color: #a8a29e !important;
+    font-size: 0.8rem !important;
+    font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  }
+  .expressive-code .frame pre {
+    display: block !important;
+    background: #0c0a09 !important;
+    border: 1px solid #292524 !important;
+    border-radius: 0 0 0.5rem 0.5rem !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+    overflow-x: auto !important;
+  }
+  .expressive-code .frame:not(.has-title):not(.is-terminal) pre {
+    border-radius: 0.5rem !important;
+  }
+  .expressive-code pre > code {
+    display: block !important;
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    font-size: 0.875rem !important;
+    line-height: 1.7 !important;
+    color: #fafaf9 !important;
+    font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+    white-space: pre !important;
+  }
+  .expressive-code .ec-line {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    min-height: 1.4em !important;
+  }
+  .expressive-code .ec-line .code {
+    display: block !important;
+    padding-inline: 1rem !important;
+  }
+  .expressive-code .ec-line .code span[style] {
+    color: var(--0, inherit) !important;
+  }
+  .expressive-code .copy {
+    display: flex !important;
+    position: absolute !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    z-index: 10 !important;
+  }
+  .expressive-code .copy button {
+    width: 2rem !important;
+    height: 2rem !important;
+    cursor: pointer !important;
+    opacity: 0 !important;
+    background: #0c0a09 !important;
+    border: 1px solid #292524 !important;
+    border-radius: 0.25rem !important;
+  }
+  .expressive-code .frame:hover .copy button {
+    opacity: 0.75 !important;
+  }
+</style>

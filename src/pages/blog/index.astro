@@ -15,7 +15,7 @@ const posts = (await getCollection('blog')).sort(
 
       <div class="space-y-8">
         {posts.map((post) => (
-          <a href={`/blog/${post.id}/`} class="block group rounded-2xl border border-white/5 bg-surface-900/30 p-8 hover:border-primary-500/30 hover:bg-surface-900/50 transition-all">
+          <a href={`/blog/${post.id}/`} class="glow-hover block group rounded-2xl border border-white/5 bg-surface-900/30 p-8 hover:bg-surface-900/50 transition-all">
             <time class="text-sm text-surface-700">{new Date(post.data.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
             <h2 class="mt-2 text-2xl font-semibold text-white group-hover:text-primary-400 transition-colors">{post.data.title}</h2>
             <p class="mt-2 text-surface-200">{post.data.description}</p>
