@@ -76,10 +76,13 @@ export function NavBar({ items, className }: NavBarProps) {
           const isActive = activeTab === item.name
           const isLamp = lampTab === item.name
 
+          const isExternal = item.url.startsWith("http")
+
           return (
             <a
               key={item.name}
               href={item.url}
+              {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               onClick={() => setActiveTab(item.name)}
               onMouseEnter={() => setHoveredTab(item.name)}
               className={cn(

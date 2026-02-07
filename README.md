@@ -1,49 +1,88 @@
-# Starlight Starter Kit: Basics
+# Context Mirror
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+**Make local LLMs punch above their weight.**
+
+Context Mirror is an ecosystem of AI-powered developer tools that make local LLMs more capable and reliable. This repository contains the source for [contextmirror.com](https://contextmirror.com) — the marketing site and documentation hub.
+
+## Products
+
+### Context Mirror — VSCode Extension
+
+Intelligent scaffolding for AI coding assistants. Turns local LLMs into reliable dev partners with 56 MCP tools, a hook engine for automatic guardrails, and a learning system that improves over time.
+
+- **Decode System** — converts codebases into LLM-digestible format
+- **Hook Engine** — read-before-edit, queue-based review, auto-guardrails
+- **Learning System** — captures mistakes as lessons, builds reusable skills
+- **Proven Results** — +33% performance lift (67% → 100% on behavioral tests)
+
+### Voice Mirror — Desktop Overlay
+
+A voice-controlled AI agent overlay for your entire computer. Always-on floating orb with screen awareness, browser automation, and voice cloning.
+
+- **11 AI Providers** — Claude Code, Ollama, LM Studio, Jan, OpenAI, Gemini, Groq, Mistral, OpenRouter, DeepSeek, Grok
+- **55 MCP Tools** across 8 dynamically-loaded groups
+- **Voice Cloning** — clone any voice from a 3-second audio sample
+- **Browser Automation** — full Chrome control via CDP
+- **Cross-platform** — Windows, macOS, Linux
+
+## Tech Stack
+
+- [Astro](https://astro.build) v5 — static site generation
+- [Starlight](https://starlight.astro.build) — documentation theme
+- [React](https://react.dev) v19 — interactive components
+- [Tailwind CSS](https://tailwindcss.com) v4 — styling
+- [Framer Motion](https://motion.dev) — animations
+- [Spline](https://spline.design) — 3D visuals
+- [TypeScript](https://www.typescriptlang.org) — type safety
+
+## Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/contextmirror/contextmirror.com.git
+cd contextmirror.com
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+```
+
+The dev server runs at `http://localhost:4321`.
+
+## Commands
+
+| Command           | Action                                  |
+| :---------------- | :-------------------------------------- |
+| `npm run dev`     | Start local dev server at `localhost:4321` |
+| `npm run build`   | Build production site to `./dist/`      |
+| `npm run preview` | Preview the production build locally    |
+
+## Project Structure
 
 ```
-npm create astro@latest -- --template starlight
+src/
+├── components/       # Astro + React UI components
+│   └── ui/           # Reusable UI (navbar, cards, orb demo)
+├── content/
+│   ├── blog/         # Blog posts (Markdown)
+│   └── docs/         # Documentation (Starlight)
+├── layouts/          # Page layouts
+├── pages/            # Route pages
+├── styles/           # Global CSS + Tailwind theme
+└── lib/              # Utilities
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deployment
 
-## 🚀 Project Structure
+The site deploys automatically to GitHub Pages on every push to `main` via GitHub Actions. The workflow installs dependencies, builds the static site, and publishes the `./dist/` directory.
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+**Live at:** [contextmirror.com](https://contextmirror.com)
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+## Links
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
-
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+- [Documentation](https://contextmirror.com/docs/introduction/)
+- [Discord](https://discord.gg/JBpsSFB7EQ)
+- [GitHub](https://github.com/contextmirror)
+- [Contact](mailto:contextmirror@proton.me)
