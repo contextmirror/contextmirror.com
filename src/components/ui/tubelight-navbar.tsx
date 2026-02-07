@@ -5,10 +5,12 @@ import { motion } from "framer-motion"
 import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+type IconComponent = LucideIcon | React.ComponentType<{ size?: number; strokeWidth?: number }>
+
 interface NavItem {
   name: string
   url: string
-  icon: LucideIcon
+  icon: IconComponent
 }
 
 interface NavBarProps {
