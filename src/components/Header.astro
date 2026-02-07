@@ -4,5 +4,5 @@ import Default from '@astrojs/starlight/components/Header.astro';
 import { SiteNavBar } from './ui/site-navbar';
 ---
 
-<SiteNavBar client:load />
+<SiteNavBar client:only="react" />
 <Default {...Astro.props}><slot /></Default>

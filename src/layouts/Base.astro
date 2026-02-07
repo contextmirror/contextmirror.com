@@ -38,7 +38,7 @@ const { title, description = 'Make local LLMs punch above their weight. Intellig
 </head>
 <body class="bg-surface-950 text-surface-100 font-sans antialiased">
   <!-- Navigation -->
-  <SiteNavBar client:load />
+  <SiteNavBar client:only="react" />
 
   <main class="pt-4 sm:pt-16 pb-20 sm:pb-0">
     <slot />
@@ -69,7 +69,7 @@ const { title, description = 'Make local LLMs punch above their weight. Intellig
           <ul class="space-y-2 text-sm text-surface-500">
             <li><a href="/docs/introduction/" class="hover:text-white transition-colors">Documentation</a></li>
             <li><a href="/blog/" class="hover:text-white transition-colors">Blog</a></li>
-            <li><a href="/changelog/" class="hover:text-white transition-colors">Changelog</a></li>
+
           </ul>
         </div>
         <div>

@@ -91,7 +91,7 @@ function WindowsDesktop() {
         <div style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(8px)", borderRadius: "8px", padding: "3px 10px", fontSize: "9px", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.1)", marginBottom: "6px", textAlign: "center" }}>
           Voice Mirror
         </div>
-        <div style={{ width: "48px", height: "48px", borderRadius: "50%", boxShadow: "0 0 24px rgba(102,126,234,0.4)", animation: "orbFloat 3s ease-in-out infinite" }}>
+        <div style={{ width: "64px", height: "64px", borderRadius: "50%", boxShadow: "0 0 28px rgba(102,126,234,0.4)", animation: "orbFloat 3s ease-in-out infinite" }}>
           <img src="/orb.png" alt="" style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
         </div>
       </div>
@@ -155,7 +155,7 @@ function MacOSDesktop() {
         <div style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)", borderRadius: "8px", padding: "3px 10px", fontSize: "9px", color: "rgba(255,255,255,0.55)", border: "1px solid rgba(255,255,255,0.12)", marginBottom: "6px", textAlign: "center" }}>
           Voice Mirror
         </div>
-        <div style={{ width: "48px", height: "48px", borderRadius: "50%", boxShadow: "0 0 24px rgba(102,126,234,0.4)", animation: "orbFloat 3s ease-in-out infinite" }}>
+        <div style={{ width: "64px", height: "64px", borderRadius: "50%", boxShadow: "0 0 28px rgba(102,126,234,0.4)", animation: "orbFloat 3s ease-in-out infinite" }}>
           <img src="/orb.png" alt="" style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
         </div>
       </div>
@@ -208,7 +208,7 @@ function LinuxDesktop() {
         <div style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)", borderRadius: "8px", padding: "3px 10px", fontSize: "9px", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.1)", marginBottom: "6px", textAlign: "center" }}>
           Voice Mirror
         </div>
-        <div style={{ width: "52px", height: "52px", borderRadius: "50%", boxShadow: "0 0 24px rgba(102,126,234,0.4)", animation: "orbFloat 3s ease-in-out infinite" }}>
+        <div style={{ width: "64px", height: "64px", borderRadius: "50%", boxShadow: "0 0 28px rgba(102,126,234,0.4)", animation: "orbFloat 3s ease-in-out infinite" }}>
           <img src="/orb.png" alt="" style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
         </div>
       </div>

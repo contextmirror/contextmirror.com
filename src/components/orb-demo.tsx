@@ -354,8 +354,8 @@ export function OrbStateDemo() {
             onClick={() => setActiveState(state)}
             className={`group rounded-2xl border p-6 text-center transition-all duration-300 cursor-pointer ${
               activeState === state
-                ? 'border-accent-500/40 bg-surface-900/60'
-                : 'border-white/5 bg-surface-900/30 hover:border-white/10 hover:bg-surface-900/40'
+                ? 'border-white/20 bg-white/[0.04]'
+                : 'border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04]'
             }`}
           >
             <div className="flex justify-center mb-4">
@@ -370,7 +370,7 @@ export function OrbStateDemo() {
               </div>
             </div>
             <h3 className="font-semibold text-white text-lg">{label}</h3>
-            <p className="mt-2 text-sm text-surface-200 leading-relaxed">{description}</p>
+            <p className="mt-2 text-sm text-surface-400 leading-relaxed">{description}</p>
           </button>
         ))}
       </div>
