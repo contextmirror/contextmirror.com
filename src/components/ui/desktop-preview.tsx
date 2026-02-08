@@ -216,9 +216,70 @@ function LinuxDesktop() {
   );
 }
 
+/* ── Install commands per OS ──────────────────────────────────── */
+const INSTALL_COMMANDS: Record<OS, { oneliner: string; label: string; shell: string }> = {
+  windows: {
+    oneliner: "irm https://raw.githubusercontent.com/contextmirror/voice-mirror-electron/main/install.ps1 | iex",
+    label: "PowerShell",
+    shell: "PS >",
+  },
+  macos: {
+    oneliner: "curl -fsSL https://raw.githubusercontent.com/contextmirror/voice-mirror-electron/main/install.sh | bash",
+    label: "Terminal",
+    shell: "$",
+  },
+  linux: {
+    oneliner: "curl -fsSL https://raw.githubusercontent.com/contextmirror/voice-mirror-electron/main/install.sh | bash",
+    label: "Terminal",
+    shell: "$",
+  },
+};
+
+/* ── Copy button ─────────────────────────────────────────────── */
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      style={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        padding: "4px",
+        color: copied ? "#22c55e" : "rgba(255,255,255,0.4)",
+        transition: "color 0.2s",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      title="Copy to clipboard"
+    >
+      {copied ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      ) : (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
 /* ── Main Component ──────────────────────────────────────────── */
 export function DesktopPreview() {
   const [activeOS, setActiveOS] = useState<OS>("windows");
+
+  const install = INSTALL_COMMANDS[activeOS];
 
   return (
     <div>
@@ -267,10 +328,44 @@ export function DesktopPreview() {
         {activeOS === "linux" && <LinuxDesktop />}
       </div>
 
-      {/* Platform availability text */}
-      <p style={{ textAlign: "center", marginTop: "12px", fontSize: "13px", color: "#78716c" }}>
-        Available on Windows, macOS, and Linux
-      </p>
+      {/* Install command */}
+      <div style={{ marginTop: "20px" }}>
+        <div
+          style={{
+            borderRadius: "12px",
+            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(10,10,18,0.8)",
+            overflow: "hidden",
+          }}
+        >
+          {/* Shell header */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "8px 16px",
+              borderBottom: "1px solid rgba(255,255,255,0.05)",
+              background: "rgba(255,255,255,0.02)",
+            }}
+          >
+            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.35)", fontWeight: 500 }}>
+              {install.label}
+            </span>
+            <CopyButton text={install.oneliner} />
+          </div>
+          {/* Command */}
+          <div style={{ padding: "14px 16px", fontFamily: "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }}>
+            <code style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.7)", wordBreak: "break-all" }}>
+              <span style={{ color: "rgba(130,255,160,0.7)", userSelect: "none" }}>{install.shell} </span>
+              {install.oneliner}
+            </code>
+          </div>
+        </div>
+        <p style={{ textAlign: "center", marginTop: "10px", fontSize: "13px", color: "#78716c" }}>
+          One command to install. Available on Windows, macOS, and Linux.
+        </p>
+      </div>
     </div>
   );
 }
