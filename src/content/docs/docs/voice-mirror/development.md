@@ -76,7 +76,7 @@ voice-mirror-electron/
 │   ├── tts/                # TTS adapters (Kokoro, Qwen3)
 │   ├── stt/                # STT adapters (Parakeet, Whisper)
 │   └── electron_bridge.py  # IPC bridge for Electron
-├── mcp-server/             # MCP server (55 tools, 8 groups)
+├── mcp-server/             # MCP server (58 tools, 8 groups)
 ├── wayland-orb/            # Rust native overlay (Linux/Wayland)
 ├── chrome-extension/       # Browser relay extension (MV3, CDP)
 ├── test/                   # Unit tests (14 suites, 138 cases)
@@ -85,6 +85,10 @@ voice-mirror-electron/
 ├── assets/                 # Icons (16-256px)
 └── package.json
 ```
+
+## TUI Dashboard
+
+For local model providers (Ollama, LM Studio, Jan), Voice Mirror includes an interactive terminal dashboard. Run `npm run setup` to launch the TUI Dashboard, which provides a visual interface for browsing available models, selecting providers, and configuring settings. This is the recommended way to discover and set up local models during development.
 
 ## Configuration
 

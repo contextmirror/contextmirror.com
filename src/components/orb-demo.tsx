@@ -1,7 +1,7 @@
 /**
  * orb-demo.tsx — Accurate orb state demo for the Voice Mirror page.
- * Direct port of the real orb-canvas.js renderer, showing three states:
- * Idle, Human Speaks (recording), AI Speaks (speaking).
+ * Direct port of the real orb-canvas.js renderer, showing all five states:
+ * Idle, Human Speaks (recording), AI Thinks (thinking), AI Speaks (speaking), Dictation.
  */
 import { useEffect, useRef, useState } from 'react';
 
@@ -25,15 +25,17 @@ function roundedRectSDF(px: number, py: number, halfW: number, halfH: number, co
 }
 
 // --- State types ---
-type OrbState = 'idle' | 'recording' | 'speaking';
+type OrbState = 'idle' | 'recording' | 'speaking' | 'thinking' | 'dictating';
 
 const DURATIONS: Record<OrbState, number> = {
   idle: 1500,
   recording: 500,
   speaking: 1000,
+  thinking: 2000,
+  dictating: 800,
 };
 
-// --- Color transform ---
+// --- Color transform (matches orb-canvas.js applyStateColor exactly) ---
 function applyStateColor(r: number, g: number, b: number, alpha: number, state: OrbState): [number, number, number, number] {
   let rf = r / 255;
   let gf = g / 255;
@@ -50,6 +52,15 @@ function applyStateColor(r: number, g: number, b: number, alpha: number, state: 
       bf = Math.min(bf * 1.2 + 0.1, 1);
       gf = Math.min(gf * 1.1 + 0.05, 1);
       rf *= 0.8;
+      break;
+    case 'thinking':
+      gf = Math.min(gf * 1.2 + 0.1, 1);
+      bf = Math.min(bf * 1.1, 1);
+      rf *= 0.6;
+      break;
+    case 'dictating':
+      bf = Math.min(bf * 1.3 + 0.1, 1);
+      gf = Math.min(gf * 1.1, 1);
       break;
   }
   return [rf, gf, bf, alpha];
@@ -191,6 +202,40 @@ function drawRobotIcon(imageData: ImageData, width: number, height: number, cx: 
   }
 }
 
+// --- Waveform bars for dictation state (simulated amplitude for demo) ---
+function drawWaveformBars(imageData: ImageData, width: number, height: number, cx: number, cy: number, innerRadius: number, phase: number): void {
+  const data = imageData.data;
+
+  const barCount = 7;
+  const barWidth = 3;
+  const barGap = 2;
+  const totalWidth = barCount * barWidth + (barCount - 1) * barGap;
+  const startX = Math.round(cx - totalWidth / 2);
+  const maxBarHeight = Math.round(innerRadius * 1.4);
+  const minBarHeight = 4;
+
+  for (let i = 0; i < barCount; i++) {
+    // Simulated amplitude: each bar oscillates at a different phase offset
+    const barPhase = (phase + i * 0.15) % 1;
+    const amplitude = 0.3 + 0.7 * Math.abs(Math.sin(barPhase * TAU));
+    const barHeight = Math.round(minBarHeight + amplitude * (maxBarHeight - minBarHeight));
+    const bx = startX + i * (barWidth + barGap);
+    const byTop = Math.round(cy - barHeight / 2);
+    const byBottom = byTop + barHeight;
+
+    for (let y = byTop; y < byBottom; y++) {
+      if (y < 0 || y >= height) continue;
+      for (let x = bx; x < bx + barWidth; x++) {
+        if (x < 0 || x >= width) continue;
+        const dx = x + 0.5 - cx, dy = y + 0.5 - cy;
+        if (Math.sqrt(dx * dx + dy * dy) > innerRadius) continue;
+        const off = (y * width + x) * 4;
+        blendOver(data, off, 0.71, 0.86, 1.0, 0.85);
+      }
+    }
+  }
+}
+
 // --- Main orb render ---
 function renderOrb(imageData: ImageData, width: number, height: number, state: OrbState, phase: number): void {
   const data = imageData.data;
@@ -210,6 +255,12 @@ function renderOrb(imageData: ImageData, width: number, height: number, state: O
       scale = phase < 0.5
         ? 1 + 0.08 * Math.sin(phase * 2 * TAU)
         : 1 - 0.05 * Math.sin((phase - 0.5) * 2 * TAU);
+      break;
+    case 'thinking':
+      scale = 1;
+      break;
+    case 'dictating':
+      scale = 1 + 0.05 * Math.sin(phase * TAU);
       break;
     default:
       scale = 1;
@@ -263,6 +314,8 @@ function renderOrb(imageData: ImageData, width: number, height: number, state: O
     drawHumanIcon(imageData, width, height, cx, cy, innerRadius, state);
   } else if (state === 'speaking') {
     drawRobotIcon(imageData, width, height, cx, cy, innerRadius, state);
+  } else if (state === 'dictating') {
+    drawWaveformBars(imageData, width, height, cx, cy, innerRadius, phase);
   }
 }
 
@@ -319,13 +372,17 @@ function OrbCanvas({ state, size = 96 }: { state: OrbState; size?: number }) {
 const GLOW_COLORS: Record<OrbState, string> = {
   idle: 'rgba(102, 126, 234, 0.3)',
   recording: 'rgba(234, 102, 102, 0.3)',
+  thinking: 'rgba(102, 234, 160, 0.3)',
   speaking: 'rgba(102, 180, 234, 0.3)',
+  dictating: 'rgba(120, 160, 234, 0.3)',
 };
 
 const STATE_INFO: { state: OrbState; label: string; description: string }[] = [
   { state: 'idle', label: 'Idle', description: 'Purple gradient with gentle pulse — listening for wake word or input' },
   { state: 'recording', label: 'Human Speaks', description: 'Pink/red shift with human silhouette — capturing your voice' },
+  { state: 'thinking', label: 'AI Thinks', description: 'Green/teal shift, static size — processing your request' },
   { state: 'speaking', label: 'AI Speaks', description: 'Blue/cyan shift with robot icon — AI responding via voice' },
+  { state: 'dictating', label: 'Dictation', description: 'Blue shift with waveform bars — voice-to-text input mode' },
 ];
 
 export function OrbStateDemo() {
@@ -347,30 +404,30 @@ export function OrbStateDemo() {
       </div>
 
       {/* State selector cards */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         {STATE_INFO.map(({ state, label, description }) => (
           <button
             key={state}
             onClick={() => setActiveState(state)}
-            className={`group rounded-2xl border p-6 text-center transition-all duration-300 cursor-pointer ${
+            className={`group rounded-2xl border p-5 text-center transition-all duration-300 cursor-pointer ${
               activeState === state
                 ? 'border-white/20 bg-white/[0.04]'
                 : 'border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04]'
             }`}
           >
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-3">
               <div className="relative">
                 <div
                   className="absolute inset-0 rounded-full blur-[12px] transition-colors duration-500"
                   style={{ background: GLOW_COLORS[state], transform: 'scale(2)' }}
                 />
                 <div className="relative">
-                  <OrbCanvas state={state} size={64} />
+                  <OrbCanvas state={state} size={56} />
                 </div>
               </div>
             </div>
-            <h3 className="font-semibold text-white text-lg">{label}</h3>
-            <p className="mt-2 text-sm text-surface-400 leading-relaxed">{description}</p>
+            <h3 className="font-semibold text-white text-base">{label}</h3>
+            <p className="mt-1.5 text-xs text-surface-400 leading-relaxed">{description}</p>
           </button>
         ))}
       </div>

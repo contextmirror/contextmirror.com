@@ -21,7 +21,7 @@ Voice Mirror is a three-process Electron application that combines voice I/O, AI
 │   └─────────────┘  └──────────────────────────┘  │
 │                                                   │
 │   ┌──────────────────────────────────────────┐   │
-│   │         MCP Server (55 tools)            │   │
+│   │         MCP Server (58 tools)            │   │
 │   │   8 dynamically-loaded tool groups       │   │
 │   └──────────────────────────────────────────┘   │
 └──────────────────────────────────────────────────┘
@@ -114,7 +114,9 @@ Voice Mirror supports **11 AI providers** with automatic detection:
 
 Switch between providers without restart. API keys auto-detected from environment variables.
 
-## MCP Tools (55 Total, 8 Groups)
+**TUI Dashboard:** Voice Mirror includes a terminal-based interactive dashboard for managing local model providers. The TUI Dashboard lets you browse available models from Ollama, LM Studio, and Jan, select which model to use, and configure provider settings — all from within the terminal without leaving the application.
+
+## MCP Tools (58 Total, 8 Groups)
 
 Tools load dynamically — only what's needed is active at any time.
 
@@ -125,7 +127,7 @@ Tools load dynamically — only what's needed is active at any time.
 | **screen** (1) | capture_screen | Desktop screenshots |
 | **memory** (6) | search, get, remember, forget, stats, flush | Hybrid semantic + keyword search |
 | **voice-clone** (3) | clone_voice, clear_voice_clone, list_voice_clones | Voice cloning from audio |
-| **browser** (14) | start, stop, navigate, screenshot, snapshot, act, search, fetch... | Full Chrome automation via CDP |
+| **browser** (16) | start, stop, navigate, screenshot, snapshot, act, search, fetch, cookies, storage... | Full Chrome automation via CDP |
 | **n8n** (22) | workflows CRUD, executions, credentials, nodes, tags, variables | Workflow automation |
 | **diagnostic** (1) | pipeline_trace | Message flow tracing |
 
@@ -162,6 +164,19 @@ Three pages accessible via sidebar:
 - **Chat** — Message history with markdown rendering and tool visualization
 - **Claude Code** — Embedded terminal with full Claude Code output
 - **Settings** — Provider selection, voice config, audio devices, appearance
+
+### Theme Customization
+
+Voice Mirror includes a full theme suite for personalizing the UI:
+
+- **6 built-in presets** — Dark, Midnight, Emerald, Rose, Slate, and Claude Gray
+- **10 customizable colors** — Background, surface, text, accent, status indicators, and orb core. The engine auto-derives 20+ CSS variables for visual cohesion.
+- **Orb styling** — Custom core color and adjustable size (32px–256px) with live preview across all states
+- **Message bubbles** — Three shape styles (rounded, square, pill) plus custom colors, font sizes, padding, and avatar sizes
+- **Typography** — Choose from 6 UI fonts and 5 monospace fonts, or upload your own TTF/OTF files
+- **Import/Export** — Share themes as JSON files
+
+All changes preview in real-time. The terminal color palette automatically adapts to match your chosen theme.
 
 ## Security Model
 

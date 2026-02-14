@@ -27,10 +27,6 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Context Mirror',
-          autogenerate: { directory: 'docs/context-mirror' },
-        },
-        {
           label: 'Voice Mirror',
           autogenerate: { directory: 'docs/voice-mirror' },
         },

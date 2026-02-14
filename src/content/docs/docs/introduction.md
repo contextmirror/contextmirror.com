@@ -1,69 +1,78 @@
 ---
 title: Introduction
-description: What is Context Mirror and why does it exist?
+description: What is Voice Mirror and why does it exist?
 ---
 
-# Introduction to Context Mirror
+# Introduction to Voice Mirror
 
-**Context Mirror** is an ecosystem of AI-powered developer tools that make local LLMs punch above their weight through intelligent scaffolding.
+**Voice Mirror** is a voice-controlled AI agent overlay for your desktop, built by [Context Mirror](https://contextmirror.com). It turns any AI model into a hands-free assistant that can hear you, see your screen, control your browser, and remember everything across sessions.
 
 ## The Problem
 
-Local LLMs (Qwen, Devstral, etc.) are fast, private, and free — but they struggle with:
+Today's AI assistants live inside chat windows. They are powerful reasoners, but they are trapped behind a text box:
 
-- Understanding large codebases
-- Remembering context across sessions
-- Following project conventions
-- Making changes without breaking things
+- **They can't hear you.** You type everything, even when speaking would be faster.
+- **They can't see your screen.** You screenshot, crop, paste, and describe what you are looking at.
+- **They can't act on your behalf.** You copy their suggestions and run them yourself.
+- **They forget you.** Every session starts from zero. Preferences, decisions, and context are lost.
+- **They live in one app.** Switch windows and your assistant is gone.
 
-Cloud-based assistants (Copilot, Cursor) solve some of these but require sending your code to external servers. **Context Mirror keeps everything local.**
+You end up spending more time wrangling the interface than getting help. The assistant is smart, but it is blind, deaf, and amnesiac.
 
 ## The Solution
 
-Context Mirror provides a cognitive operating system that gives local models the awareness and guardrails they need:
+Voice Mirror sits as a floating orb on your desktop, always available, never in the way. It bridges the gap between AI intelligence and real-world interaction:
 
-- **Smart Context Injection** — Auto-decodes your workspace into LLM-digestible format
-- **Self-Learning System** — Captures mistakes as lessons, learns patterns, builds skills
-- **Persistent Memory** — Three-tier memory (core, stable, volatile) across sessions
-- **Hook Enforcement** — Event-driven policies that catch mistakes before they happen
-- **Semantic Search** — Find code by meaning, not keywords
-- **Multi-Agent Collaboration** — Browser Claude + Claude Code + local LLMs working together
+- **Hears you** — Wake word detection ("Hey Claude"), push-to-talk, or always-on call mode. Speak naturally and it understands.
+- **Sees your screen** — Multi-monitor screenshot capture and analysis. Ask "what's on my screen?" and it tells you.
+- **Acts on your behalf** — Runs terminal commands, automates browser workflows, manages files, and orchestrates n8n automations.
+- **Speaks back** — Seven TTS engines including real-time voice cloning from a 3-second audio sample. Responses are spoken aloud, not just displayed.
+- **Remembers you** — Three-tier persistent memory (core, stable, notes) survives across sessions. Your preferences, decisions, and context carry forward.
+- **Works with any AI** — 75+ models via Claude Code, OpenCode, Ollama, LM Studio, OpenAI, Gemini, Groq, and more. Bring your own model or use a cloud provider.
 
-## Proven Results
+## Key Capabilities
 
-- **+33% performance lift** from scaffolding alone (67% → 100% on behavioral tests)
-- **14B with scaffolding > 70B without** — smaller models outperform larger ones
-- **919 unit tests**, 100 behavioral tests, 92% pass rate
+### 58 MCP Tools Across 8 Groups
 
-## Products
+Voice Mirror exposes a rich set of tools to the AI through the Model Context Protocol (MCP). Tool groups load dynamically so the AI only uses what it needs:
 
-### Context Mirror (VSCode Extension)
+| Group | Tools | What It Does |
+|-------|-------|-------------|
+| **Core** | 4 | Voice I/O, presence, inbox |
+| **Memory** | 6 | Persistent memory with semantic search |
+| **Browser** | 16 | Full Chrome automation via CDP |
+| **n8n** | 22 | Workflow automation and orchestration |
+| **Screen** | 1 | Multi-monitor screenshot capture |
+| **Voice Clone** | 3 | Clone voices from audio samples |
+| **Diagnostic** | 1 | Pipeline tracing and debugging |
+| **Facades** | 3 | Token-efficient single-tool wrappers |
 
-The core product. A VSCode extension (~50K lines of TypeScript) that scaffolds your local LLM with:
+### Browser Automation
 
-- **Decode System** — Codebase "vision" for local LLMs
-- **40+ tools** for file operations, semantic search, code analysis, git
-- **Hook Engine** — Automatic guardrails (read-before-edit, queue-based review)
-- **Learning System** — Lessons, patterns, skills, and confidence tracking
-- **56 MCP tools** across 10 modules, compatible with Claude Code
+Full Chrome DevTools Protocol integration. The AI can open tabs, navigate, click, type, fill forms, take screenshots, read accessibility trees, manage cookies and storage, and run Google searches — all hands-free.
 
-### Voice Mirror (Desktop Overlay)
+### Workflow Automation
 
-A voice-controlled AI agent overlay for your entire computer. Voice Mirror combines:
+22 n8n integration tools for managing workflows, executions, credentials, tags, variables, and nodes. Build and trigger automations through voice commands.
 
-- **Always-on floating orb** — Tiny overlay that lives on your desktop
-- **Voice-first interaction** — Wake word ("Hey Claude"), push-to-talk, or always-on
-- **Screen awareness** — Can see and analyze what's on your screen
-- **55 MCP tools** across 8 dynamically-loaded groups
-- **11 AI providers** — Claude Code, Ollama, LM Studio, OpenAI, Gemini, and more
-- **Browser automation** — Full Chrome control via CDP (navigate, click, type, screenshot)
-- **n8n integration** — 22 tools for workflow automation
-- **Voice cloning** — Clone any voice from a 3-second audio sample
-- **Cross-platform** — Windows, macOS, Linux
+### Voice Cloning
+
+Clone any voice from a 3-second audio sample using Qwen3-TTS. Nine preset speakers plus unlimited custom clones. GPU recommended for real-time performance.
+
+### Cross-Platform
+
+Voice Mirror runs on Windows, macOS, and Linux. The Electron shell provides the overlay and UI, while a Python backend handles the voice pipeline (wake word, speech-to-text, text-to-speech, voice activity detection).
 
 ## Getting Started
 
-1. **Context Mirror**: Install the VSCode extension and have a local LLM running
-2. **Voice Mirror**: Download the desktop app — it works standalone or alongside Context Mirror
+Getting Voice Mirror running takes three steps:
 
-See the [Installation](/docs/installation/) guide for detailed setup instructions.
+```bash
+git clone https://github.com/contextmirror/voice-mirror-electron
+cd voice-mirror-electron
+npm install && npm start
+```
+
+The floating orb appears on your desktop. Say "Hey Claude" to start talking.
+
+For the full setup including the Python voice backend and AI provider configuration, see the [Installation](/docs/installation/) guide. For a hands-on walkthrough, see the [Quick Start](/docs/quickstart/).

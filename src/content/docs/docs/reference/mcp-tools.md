@@ -1,63 +1,15 @@
 ---
 title: MCP Tools Reference
-description: Complete reference for all MCP tools in the Context Mirror ecosystem
+description: Complete reference for all MCP tools in Voice Mirror
 ---
 
 # MCP Tools Reference
 
-The Context Mirror ecosystem provides MCP (Model Context Protocol) tools across both products, enabling Claude Code and other MCP-aware agents to interact with the system.
+Voice Mirror provides 58 MCP (Model Context Protocol) tools across 8 dynamically loadable groups, enabling Claude Code and other MCP-aware agents to interact with the system.
 
-## Context Mirror Tools (56 total)
+## Core Group (4 tools) — Always loaded
 
-Context Mirror exposes 56 tools across 10 modules:
-
-### File Operations
-- **read_file** / **write_file** / **edit_file** — File CRUD operations
-- **search_files** — Glob-based file search
-- **list_directory** — Directory listing
-
-### Semantic Search
-- **semantic_search** — Vector-based code discovery using nomic-embed-text
-- **grep_search** — Pattern-based content search
-
-### Memory
-- **remember** — Store a fact with tier classification (core/stable/volatile)
-- **recall** — Search memory with hybrid semantic + keyword matching
-- **forget** — Remove a stored memory
-
-### Code Analysis
-- **get_symbols** — LSP-powered symbol extraction
-- **get_references** — Find all references to a symbol
-- **analyze_dependencies** — Dependency graph analysis
-
-### Learning
-- **record_lesson** — Capture mistakes and solutions (injected on Decode)
-- **record_pattern** — Record codebase patterns
-- **record_skill** — Record workflow knowledge
-- **record_outcome** — Track success/failure for confidence calibration
-
-### Delegation
-- **query_local_llm** — Ask the local LLM a question
-- **delegate_task** — Assign work to the local LLM
-- **get_work_panel_state** — Check todos, pending writes, artifacts
-
-### Git Operations
-- **git_status** / **git_diff** / **git_log** — Repository state
-- **git_commit** — Create commits
-
-### Diagnostics
-- **get_devlogs** — Real-time hook execution, tool parsing, errors
-- **get_codebase_summary** — Doc drift detection
-
----
-
-## Voice Mirror Tools (55 total, 8 groups)
-
-Voice Mirror tools load dynamically in groups. Use `load_tools` / `unload_tools` to manage what's active.
-
-### Core Group (4 tools) — Always loaded
-
-#### `claude_send`
+### `claude_send`
 Send a message to the Voice Mirror inbox. The message will be spoken via TTS.
 
 ```json
@@ -68,7 +20,7 @@ Send a message to the Voice Mirror inbox. The message will be spoken via TTS.
 }
 ```
 
-#### `claude_inbox`
+### `claude_inbox`
 Read messages from the inbox. Supports filtering by sender and read status.
 
 ```json
@@ -79,7 +31,7 @@ Read messages from the inbox. Supports filtering by sender and read status.
 }
 ```
 
-#### `claude_listen`
+### `claude_listen`
 Wait for voice input from the user. Blocks until a message arrives or timeout.
 
 ```json
@@ -90,7 +42,7 @@ Wait for voice input from the user. Blocks until a message arrives or timeout.
 }
 ```
 
-#### `claude_status`
+### `claude_status`
 Update or query instance presence status.
 
 ```json
@@ -102,14 +54,14 @@ Update or query instance presence status.
 }
 ```
 
-### Meta Group (3 tools) — Always loaded
+## Meta Group (3 tools) — Always loaded
 
-#### `load_tools` / `unload_tools` / `list_tool_groups`
+### `load_tools` / `unload_tools` / `list_tool_groups`
 Dynamically manage which tool groups are active. Groups: screen, memory, voice-clone, browser, n8n, diagnostic.
 
-### Memory Group (6 tools)
+## Memory Group (6 tools)
 
-#### `memory_search`
+### `memory_search`
 Hybrid semantic + keyword search across stored memories.
 
 ```json
@@ -120,7 +72,7 @@ Hybrid semantic + keyword search across stored memories.
 }
 ```
 
-#### `memory_remember`
+### `memory_remember`
 Store a memory with tier classification:
 - **core** — Permanent facts (user preferences, project decisions)
 - **stable** — Important context, 7-day TTL
@@ -133,12 +85,12 @@ Store a memory with tier classification:
 }
 ```
 
-#### `memory_get` / `memory_forget` / `memory_stats` / `memory_flush`
+### `memory_get` / `memory_forget` / `memory_stats` / `memory_flush`
 Retrieve, delete, get statistics, or flush important context to persistent storage.
 
-### Screen Group (1 tool)
+## Screen Group (1 tool)
 
-#### `capture_screen`
+### `capture_screen`
 Take a screenshot of the user's desktop. Returns the image for visual analysis.
 
 ```json
@@ -147,18 +99,18 @@ Take a screenshot of the user's desktop. Returns the image for visual analysis.
 }
 ```
 
-### Voice Clone Group (3 tools)
+## Voice Clone Group (3 tools)
 
-#### `clone_voice`
+### `clone_voice`
 Clone a voice from an audio file (3-5 seconds of speech). Uses Qwen3-TTS.
 
-#### `clear_voice_clone`
+### `clear_voice_clone`
 Reset to the default TTS voice.
 
-#### `list_voice_clones`
+### `list_voice_clones`
 List all saved voice clones with metadata.
 
-### Browser Group (14 tools)
+## Browser Group (16 tools)
 
 Full Chrome/Chromium automation via CDP:
 
@@ -176,8 +128,10 @@ Full Chrome/Chromium automation via CDP:
 | `browser_console` | Get console logs/errors |
 | `browser_search` | Google search via headless browser |
 | `browser_fetch` | Extract text content from URL |
+| `browser_cookies` | Manage browser cookies (list, set, delete, clear) |
+| `browser_storage` | Read/write localStorage and sessionStorage |
 
-### n8n Group (22 tools)
+## n8n Group (22 tools)
 
 Full n8n workflow automation:
 
@@ -196,7 +150,7 @@ Full n8n workflow automation:
 | `n8n_list_variables` | Global variables (Enterprise) |
 | `n8n_deploy_template` | Deploy from n8n.io templates |
 
-### Diagnostic Group (1 tool)
+## Diagnostic Group (1 tool)
 
-#### `pipeline_trace`
+### `pipeline_trace`
 Trace message flow through the live voice pipeline. Useful for debugging audio/transcription issues.
