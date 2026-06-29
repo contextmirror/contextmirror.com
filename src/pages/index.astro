@@ -4,7 +4,7 @@ import { FloatingOrb } from '../components/ui/floating-orb';
 import { DesktopPreview } from '../components/ui/desktop-preview';
 ---
 
-<Base title="Context Mirror — Voice-Controlled AI Agent for Your Entire Computer">
+<Base title="Voice Mirror — The Voice-Native IDE. Build apps by voice; your AI sees and drives them.">
 
   <!-- Floating orb tour guide -->
   <FloatingOrb client:load />
@@ -20,21 +20,22 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
             </span>
-            Alpha — Open for early adopters
+            Alpha — Windows-first, open for early adopters
           </div>
 
           <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-white">
-            Your AI agent for
-            <span class="decoration-accent-500 underline decoration-2 underline-offset-4">everything</span>
+            Build apps by voice.
+            <span class="decoration-accent-500 underline decoration-2 underline-offset-4">Your AI sees them run.</span>
           </h1>
         </div>
 
         <!-- Right: Description -->
         <div class="md:pt-20">
           <p class="text-lg md:text-xl text-surface-400 leading-relaxed">
-            Voice Mirror is a voice-controlled AI overlay that lives on your desktop.
-            Talk to it, show it your screen, let it run commands —
-            like having a brilliant assistant that can see and do anything on your computer.
+            Voice Mirror is a <strong class="text-surface-200">voice-native IDE</strong>. Describe what you want,
+            watch it render live in the App Preview, and the in-app AI <strong class="text-surface-200">sees and drives</strong>
+            the running app — web, desktop, or native Windows apps — on the same screen you're watching.
+            Talk, build, see, fix.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row items-start gap-4">
@@ -42,7 +43,10 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
               Get Started
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </a>
-            <a href="https://github.com/contextmirror" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3 text-base font-medium text-surface-300 hover:bg-white/5 transition-all">
+            <a href="https://discord.com/invite/JBpsSFB7EQ" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3 text-base font-medium text-surface-300 hover:bg-white/5 transition-all">
+              Join the Discord
+            </a>
+            <a href="https://github.com/contextmirror/voice-mirror" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-7 py-3 text-base font-medium text-surface-300 hover:bg-white/5 transition-all">
               View on GitHub
             </a>
           </div>
@@ -62,19 +66,101 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div>
           <div class="text-3xl font-bold text-white">75+</div>
-          <div class="mt-1 text-sm text-surface-500">AI Models</div>
+          <div class="mt-1 text-sm text-surface-500">AI Models via OpenCode</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-white">58</div>
+          <div class="text-3xl font-bold text-white">45</div>
           <div class="mt-1 text-sm text-surface-500">MCP Tools</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-white">3s</div>
-          <div class="mt-1 text-sm text-surface-500">Voice Clone</div>
+          <div class="text-3xl font-bold text-white">6,700+</div>
+          <div class="mt-1 text-sm text-surface-500">Tests Passing</div>
         </div>
         <div>
           <div class="text-3xl font-bold text-white">100%</div>
-          <div class="mt-1 text-sm text-surface-500">Local & Private</div>
+          <div class="mt-1 text-sm text-surface-500">Local Voice</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Preview — the headline capability: see and drive -->
+  <section id="app-preview" class="py-24 md:py-32 border-b border-white/5">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: the pitch -->
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full border border-accent-500/30 bg-accent-500/10 px-4 py-1.5 text-sm text-accent-400 mb-6">
+            New — App Preview
+          </div>
+          <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">
+            Your AI sees and drives what you build
+          </h2>
+          <p class="mt-5 text-lg text-surface-400 leading-relaxed">
+            Ask Voice Mirror to build an app and it renders live in the <strong class="text-surface-200">App Preview</strong> —
+            a true-size, running view of your app. You and the AI look at the exact same surface. Then the AI
+            doesn't just look: it <strong class="text-surface-200">clicks, types, and reads</strong> the running
+            app to check its own work and fix what's broken.
+          </p>
+
+          <div class="mt-8 space-y-5">
+            <div class="flex gap-4">
+              <div class="mt-1 shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 text-accent-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Web &amp; desktop apps, via CDP</h3>
+                <p class="text-sm text-surface-400 leading-relaxed">Web, Tauri, WebView2, and Electron apps stream live and are driven through the Chrome DevTools Protocol.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mt-1 shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 text-accent-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Native Windows apps, via UI Automation</h3>
+                <p class="text-sm text-surface-400 leading-relaxed">Notepad, Calculator, Settings, Win32/WPF/Qt — driven with the very same tools. The AI can't tell which engine is underneath.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mt-1 shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 text-accent-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Same surface, two-way focus</h3>
+                <p class="text-sm text-surface-400 leading-relaxed">The preview follows whichever window you or the AI last touched, so you're always watching the same thing.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-8 text-sm text-surface-500">
+            The see-and-drive loop is <strong class="text-surface-400">Windows-only</strong> during alpha. macOS and Linux are on the way.
+          </p>
+        </div>
+
+        <!-- Right: placeholder visual (swap in a real App Preview screenshot/video) -->
+        <div class="relative">
+          <div class="rounded-2xl border border-white/10 bg-surface-900/40 shadow-2xl overflow-hidden aspect-[4/3]">
+            <!-- App Preview window chrome -->
+            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-white/5 bg-surface-900/60">
+              <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
+              <span class="ml-3 text-xs text-surface-500">App Preview — your app, running live</span>
+            </div>
+            <div class="relative flex h-full items-center justify-center p-8">
+              <!-- placeholder content -->
+              <div class="text-center">
+                <div class="mx-auto mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl border border-white/10 bg-white/5">
+                  <svg class="w-8 h-8 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+                <p class="text-surface-400 text-sm">Live App Preview screenshot goes here</p>
+                <p class="text-surface-600 text-xs mt-1">AI driving the running app — click, type, verify</p>
+              </div>
+              <!-- faux @ref highlight to hint at the element tree -->
+              <div class="absolute left-10 bottom-10 rounded-md border border-accent-500/50 bg-accent-500/10 px-2 py-1 text-[10px] font-mono text-accent-400">@e7 · button "Save"</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -88,7 +174,7 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
           Everything you'd want from an AI assistant
         </h2>
         <p class="mt-4 text-lg text-surface-400">
-          Voice Mirror sits as a floating orb on your desktop. Expand it when you need it, collapse it when you don't. It sees your screen, hears your voice, and gets things done.
+          Voice Mirror sits as a floating orb on your desktop and expands into a full voice-native IDE — code editor, file tree, integrated terminal, live App Preview, and an AI that sees, hears, and builds alongside you.
         </p>
       </div>
 
@@ -148,25 +234,36 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
           </p>
         </div>
 
-        <!-- Feature 6 -->
+        <!-- Feature 6: App Preview (see & drive) -->
+        <a href="#app-preview" class="glow-hover group rounded-2xl border border-accent-500/20 bg-accent-500/[0.04] p-8 hover:bg-accent-500/[0.07] transition-all block">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-500/15 text-accent-400 mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white">App Preview — See &amp; Drive</h3>
+          <p class="mt-3 text-surface-400 leading-relaxed">
+            Build an app by voice and watch it render live. The AI sees the same running app you do — then clicks, types, and reads it to verify and fix its own work. Web, desktop, and native Windows apps.
+          </p>
+        </a>
+
+        <!-- Feature 7: Built-in IDE -->
         <div class="glow-hover group rounded-2xl border border-white/5 bg-white/[0.02] p-8 hover:bg-white/[0.04] transition-all">
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 text-surface-300 mb-5">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
           </div>
-          <h3 class="text-xl font-semibold text-white">Voice Cloning</h3>
+          <h3 class="text-xl font-semibold text-white">Built-in IDE</h3>
           <p class="mt-3 text-surface-400 leading-relaxed">
-            Clone any voice from a 3-second audio clip. Have your assistant respond in your preferred voice. Powered by Qwen3-TTS, running locally.
+            A full VS Code-style workspace — CodeMirror editor, file tree, command palette, language-server smarts, integrated terminals, and a dev-server manager. Edit, run, and preview, all voice-assisted.
           </p>
         </div>
 
-        <!-- Feature 7 -->
+        <!-- Feature 8 -->
         <div class="glow-hover group rounded-2xl border border-white/5 bg-white/[0.02] p-8 hover:bg-white/[0.04] transition-all">
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 text-surface-300 mb-5">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
           </div>
           <h3 class="text-xl font-semibold text-white">Fully Customizable</h3>
           <p class="mt-3 text-surface-400 leading-relaxed">
-            Complete theme suite with 6 presets, 10 customizable colors, orb styling, message bubble shapes, custom font uploads, and JSON theme import/export. Make it yours.
+            A full theme suite — built-in presets (including a colorblind-safe default and a light mode), customizable colors, orb styling, custom fonts, and JSON theme import/export. Make it yours.
           </p>
         </div>
       </div>
@@ -193,13 +290,13 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-8">
           <div class="text-5xl font-bold text-accent-500 mb-4">02</div>
-          <h3 class="text-lg font-semibold text-white">Talk or Type</h3>
-          <p class="mt-2 text-surface-400 text-sm leading-relaxed">Speak naturally or type commands directly into the built-in terminal. Works with any CLI-based LLM — Claude Code, local models, or anything else. It understands context and takes action.</p>
+          <h3 class="text-lg font-semibold text-white">Describe &amp; Build</h3>
+          <p class="mt-2 text-surface-400 text-sm leading-relaxed">Say what you want to build. The AI writes the code, runs the dev server, and launches your app live in the App Preview. Works with Claude Code, OpenCode, Ollama, and more.</p>
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-8">
           <div class="text-5xl font-bold text-accent-500 mb-4">03</div>
-          <h3 class="text-lg font-semibold text-white">Watch It Work</h3>
-          <p class="mt-2 text-surface-400 text-sm leading-relaxed">It runs commands, browses the web, automates workflows, and speaks the results back. You stay focused on what matters.</p>
+          <h3 class="text-lg font-semibold text-white">See, Drive &amp; Fix</h3>
+          <p class="mt-2 text-surface-400 text-sm leading-relaxed">You both watch the running app on the same screen. The AI clicks and types through it, catches what's broken, fixes the code, and speaks the results back. You stay focused on what matters.</p>
         </div>
       </div>
     </div>
@@ -268,16 +365,16 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-6 text-center">
-          <div class="text-3xl font-bold text-accent-500">~2%</div>
-          <div class="mt-1 text-sm text-surface-400">CPU at idle</div>
+          <div class="text-3xl font-bold text-accent-500">Rust</div>
+          <div class="mt-1 text-sm text-surface-400">Native backend</div>
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-6 text-center">
-          <div class="text-3xl font-bold text-accent-500">~130 MB</div>
-          <div class="mt-1 text-sm text-surface-400">Memory usage</div>
+          <div class="text-3xl font-bold text-accent-500">0</div>
+          <div class="mt-1 text-sm text-surface-400">Electron or Node runtime</div>
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-6 text-center">
-          <div class="text-3xl font-bold text-accent-500">&lt;1 GB</div>
-          <div class="mt-1 text-sm text-surface-400">Total model size</div>
+          <div class="text-3xl font-bold text-accent-500">CPU</div>
+          <div class="mt-1 text-sm text-surface-400">No GPU required</div>
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-6 text-center">
           <div class="text-3xl font-bold text-accent-500">100%</div>
@@ -289,19 +386,19 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-8">
           <h3 class="text-lg font-semibold text-white">ONNX-First Architecture</h3>
           <p class="mt-3 text-surface-400 text-sm leading-relaxed">
-            All default models use ONNX Runtime — optimized C++ inference on CPU. Wake word detection runs on just 4 MB of models. No PyTorch or TensorFlow overhead.
+            The default models run on ONNX Runtime — optimized C++ inference on CPU, with a tiny wake-word model always listening. No PyTorch or TensorFlow overhead.
           </p>
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-8">
           <h3 class="text-lg font-semibold text-white">Local TTS & STT</h3>
           <p class="mt-3 text-surface-400 text-sm leading-relaxed">
-            Kokoro TTS (338 MB) delivers 10 high-quality voices. Parakeet STT (600 MB) handles speech recognition. Both run entirely on CPU with no internet required.
+            Kokoro delivers high-quality speech and Whisper (whisper.cpp) handles recognition — both running locally on CPU, no internet required. Edge TTS is there as an online fallback.
           </p>
         </div>
         <div class="glow-hover rounded-2xl border border-white/5 bg-surface-900/30 p-8">
           <h3 class="text-lg font-semibold text-white">Optional Power Features</h3>
           <p class="mt-3 text-surface-400 text-sm leading-relaxed">
-            Voice cloning via Qwen3-TTS and alternative Whisper STT engines are available for users with GPUs. The defaults stay lightweight — power features load only when configured.
+            Want more? Edge TTS adds Microsoft's online voices, and larger Whisper models plus GPU acceleration improve accuracy. The defaults stay lightweight — extras load only when you configure them.
           </p>
         </div>
       </div>
@@ -312,17 +409,20 @@ import { DesktopPreview } from '../components/ui/desktop-preview';
   <section data-orb-trigger="cta" class="py-24 border-t border-white/5 bg-surface-900/20">
     <div class="mx-auto max-w-7xl px-6 text-center">
       <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">
-        Ready to talk to your computer?
+        Ready to build by voice?
       </h2>
       <p class="mt-4 text-lg text-surface-400 max-w-2xl mx-auto">
-        Voice Mirror is free during alpha. Get started in minutes.
+        Voice Mirror is free and open source, in active alpha on Windows. Build from source today, or join the Discord for alpha access as installers come online.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="/docs/introduction/" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-surface-300 hover:bg-white/5 transition-all">
-          Get Started Free
+          Get Started
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
-        <a href="https://github.com/contextmirror" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-surface-300 hover:bg-white/5 transition-all">
+        <a href="https://discord.com/invite/JBpsSFB7EQ" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-surface-300 hover:bg-white/5 transition-all">
+          Join the Discord
+        </a>
+        <a href="https://github.com/contextmirror/voice-mirror" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-surface-300 hover:bg-white/5 transition-all">
           Star on GitHub
         </a>
       </div>

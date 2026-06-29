@@ -1,78 +1,106 @@
 ---
 title: Introduction
-description: What is Voice Mirror and why does it exist?
+description: Voice Mirror is a voice-native IDE — build real apps by voice, watch them render live, and let the AI see and drive them.
 ---
 
 # Introduction to Voice Mirror
 
-**Voice Mirror** is a voice-controlled AI agent overlay for your desktop, built by [Context Mirror](https://contextmirror.com). It turns any AI model into a hands-free assistant that can hear you, see your screen, control your browser, and remember everything across sessions.
+**Voice Mirror** is a **voice-native IDE**, built by [Context Mirror](https://contextmirror.com). You describe what you want out loud, watch it get built, and see it render **live** in a sandbox **App Preview** — the same running surface that the in-app AI can **see and drive** for itself. It runs as a floating orb on your desktop and is powered by Tauri 2, Rust, and Svelte 5.
+
+The core loop is simple: **voice → build → see → fix.**
 
 ## The Problem
 
-Today's AI assistants live inside chat windows. They are powerful reasoners, but they are trapped behind a text box:
+Today's AI coding assistants live inside chat windows. They are powerful reasoners, but they are trapped behind a text box:
 
 - **They can't hear you.** You type everything, even when speaking would be faster.
-- **They can't see your screen.** You screenshot, crop, paste, and describe what you are looking at.
-- **They can't act on your behalf.** You copy their suggestions and run them yourself.
+- **They can't see what they built.** They emit code, but they never look at the running app the way you do.
+- **They can't drive it.** They can't click the button, fill the form, or notice that the layout broke.
 - **They forget you.** Every session starts from zero. Preferences, decisions, and context are lost.
-- **They live in one app.** Switch windows and your assistant is gone.
+- **They live in one window.** Your editor, terminal, AI, and the app under construction are scattered across separate tools.
 
-You end up spending more time wrangling the interface than getting help. The assistant is smart, but it is blind, deaf, and amnesiac.
+You end up describing your own screen back to an assistant that can't act on it. The intelligence is there; the eyes and hands are not.
 
 ## The Solution
 
-Voice Mirror sits as a floating orb on your desktop, always available, never in the way. It bridges the gap between AI intelligence and real-world interaction:
+Voice Mirror closes the loop. Speak an idea, and it builds a real app. The app renders **live** in the **App Preview** — a true-size view of what's running. Crucially, the AI looks at that *same* surface: it can take a screenshot, read the element tree, and click and type inside the running app, then fix what it sees.
 
-- **Hears you** — Wake word detection ("Hey Claude"), push-to-talk, or always-on call mode. Speak naturally and it understands.
-- **Sees your screen** — Multi-monitor screenshot capture and analysis. Ask "what's on my screen?" and it tells you.
-- **Acts on your behalf** — Runs terminal commands, automates browser workflows, manages files, and orchestrates n8n automations.
-- **Speaks back** — Seven TTS engines including real-time voice cloning from a 3-second audio sample. Responses are spoken aloud, not just displayed.
-- **Remembers you** — Three-tier persistent memory (core, stable, notes) survives across sessions. Your preferences, decisions, and context carry forward.
-- **Works with any AI** — 75+ models via Claude Code, OpenCode, Ollama, LM Studio, OpenAI, Gemini, Groq, and more. Bring your own model or use a cloud provider.
+- **Hears you** — Wake word ("Hey Claude"), push-to-talk, or always-on call mode. Speak naturally and it understands.
+- **Builds for you** — A full IDE with editor, terminals, dev-server management, and multi-provider AI, all driven by voice.
+- **Sees and drives the app** — The App Preview streams the running app live, and the AI reads its UI and operates it like a user would.
+- **Speaks back** — Local Kokoro TTS with an Edge TTS fallback. Responses are spoken aloud, sentence by sentence, and interruptible.
+- **Remembers you** — Three-tier persistent memory (core, stable, notes) with hybrid semantic + keyword search survives across sessions.
+- **Works with any AI** — CLI agents (Claude Code, OpenCode, Codex, Gemini CLI, Kimi CLI), local runtimes (Ollama, LM Studio, Jan), and cloud providers, with 75+ models available via OpenCode.
+
+## App Preview — see and drive
+
+The **App Preview** is the headline capability. It's a live, true-size view of the app you're building, and you and the AI watch the *same* running surface.
+
+- **How the AI sees** — a live stream of the running app (CDP screencast for web / Tauri / WebView2 / Electron apps; Windows Graphics Capture for native windows).
+- **How the AI drives** — it reads an accessibility / element tree as `@e{n}` references and clicks and types against them.
+  - A **CDP** engine drives web, Tauri, WebView2, and Electron apps.
+  - A **UI Automation** engine drives **native Windows apps** (Notepad, Calculator, Settings, Win32 / WinForms / WPF / Qt) through the same tool surface — the AI can't tell which engine is underneath.
+- **Two-way focus sync** — the preview auto-follows whichever window you *or* the AI last touched.
+
+The App Preview and native-app driving are **Windows-only for now.**
 
 ## Key Capabilities
 
-### 58 MCP Tools Across 8 Groups
+### 45 MCP Tools Across 5 Groups
 
-Voice Mirror exposes a rich set of tools to the AI through the Model Context Protocol (MCP). Tool groups load dynamically so the AI only uses what it needs:
+Voice Mirror exposes its capabilities to the AI through the Model Context Protocol (MCP). Tool groups load dynamically by profile and intent, so the AI only uses what it needs:
 
-| Group | Tools | What It Does |
-|-------|-------|-------------|
-| **Core** | 4 | Voice I/O, presence, inbox |
-| **Memory** | 6 | Persistent memory with semantic search |
-| **Browser** | 16 | Full Chrome automation via CDP |
-| **n8n** | 22 | Workflow automation and orchestration |
-| **Screen** | 1 | Multi-monitor screenshot capture |
-| **Voice Clone** | 3 | Clone voices from audio samples |
-| **Diagnostic** | 1 | Pipeline tracing and debugging |
-| **Facades** | 3 | Token-efficient single-tool wrappers |
+| Group | Always loaded | Tools | What It Does |
+|-------|---------------|-------|-------------|
+| **Core** | yes | 5 | Voice I/O, presence, inbox, logs |
+| **Capture** | yes | 11 | App Preview: list/capture windows and browser, sandbox start/attach/snapshot/screenshot/click/type/close, port discovery |
+| **Memory** | no | 6 | Persistent memory with hybrid search |
+| **Browser** | no | 1 | Unified `browser_action` dispatching ~50 sub-actions (navigate, click, type, screenshot, snapshot, search, fetch, cookies, storage…) |
+| **n8n** | no | 22 | Workflow, execution, credential, tag, and node automation |
 
-### Browser Automation
+That's **45 tools across 5 groups**. Unused groups auto-unload after a stretch of idle calls to keep the AI's context lean.
 
-Full Chrome DevTools Protocol integration. The AI can open tabs, navigate, click, type, fill forms, take screenshots, read accessibility trees, manage cookies and storage, and run Google searches — all hands-free.
+### Voice-native IDE
 
-### Workflow Automation
+A VS Code-style development environment built into Voice Mirror, all reachable by voice:
 
-22 n8n integration tools for managing workflows, executions, credentials, tags, variables, and nodes. Build and trigger automations through voice commands.
+- **Code editor** — CodeMirror 6 with per-tab buffers, syntax highlighting, command palette, and Go-to-File / Line / Symbol.
+- **Language intelligence** — LSP client for definitions, references, rename, and formatting.
+- **Terminals** — integrated terminals connected to AI providers.
+- **Dev-server manager** — Node and Python project detection with auto-start (and venv setup), plus start/stop/restart from the status bar.
+- **App Preview** — the live see-and-drive surface described above.
 
-### Voice Cloning
+### Voice pipeline
 
-Clone any voice from a 3-second audio sample using Qwen3-TTS. Nine preset speakers plus unlimited custom clones. GPU recommended for real-time performance.
+- **Speech to text** — Whisper running locally (whisper.cpp), default model `base`.
+- **Text to speech** — Kokoro running locally (ONNX), with a free Microsoft **Edge TTS** cloud fallback when the local model isn't present.
+- **Activation** — Wake Word (default, "Hey Claude"), Push-to-Talk (Windows), or always-on Call Mode. Silero VAD handles voice activity detection.
 
-### Cross-Platform
+### Persistent memory
 
-Voice Mirror runs on Windows, macOS, and Linux. The Electron shell provides the overlay and UI, while a Python backend handles the voice pipeline (wake word, speech-to-text, text-to-speech, voice activity detection).
+Three tiers — core, stable, and notes — with hybrid semantic + keyword search, so preferences, decisions, and context carry forward across sessions.
+
+## Platforms
+
+Voice Mirror is **Windows-first** today, with full features including App Preview, native-app driving, and push-to-talk. **macOS and Linux are coming.**
+
+Built with Tauri 2 and Rust for the backend (the entire voice pipeline and the MCP server are native Rust — no Python, no Electron runtime) and Svelte 5 for the frontend. Lightweight by design.
 
 ## Getting Started
 
-Getting Voice Mirror running takes three steps:
+Voice Mirror is in **alpha** and under active development. Installers aren't shipping yet, so the way in today is to **build from source** — or **[join the Discord](https://discord.com/invite/JBpsSFB7EQ) for alpha access** as installers come online.
+
+### From Source
 
 ```bash
-git clone https://github.com/contextmirror/voice-mirror-electron
-cd voice-mirror-electron
-npm install && npm start
+git clone https://github.com/contextmirror/voice-mirror.git
+cd voice-mirror
+npm install
+npm run dev
 ```
 
-The floating orb appears on your desktop. Say "Hey Claude" to start talking.
+The repo is laid out with `src/` (Svelte frontend) and `src-tauri/` (Rust backend) at the root.
 
-For the full setup including the Python voice backend and AI provider configuration, see the [Installation](/docs/installation/) guide. For a hands-on walkthrough, see the [Quick Start](/docs/quickstart/).
+The floating orb appears on your desktop. Say "Hey Claude" to start talking, then describe the app you want to build.
+
+For the full setup including the Rust toolchain and AI provider configuration, see the [Installation](/docs/installation/) guide. For a hands-on walkthrough, see the [Quick Start](/docs/quickstart/). To go deeper, browse the [MCP tools reference](/docs/reference/mcp-tools/) and the [architecture overview](/docs/voice-mirror/architecture/).
