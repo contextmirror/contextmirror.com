@@ -194,7 +194,7 @@ function LinuxDesktop() {
           <div><span style={{ color: "rgba(130,255,160,0.7)" }}>user@dev</span>:<span style={{ color: "rgba(130,180,255,0.7)" }}>~/project</span>$ npm start</div>
           <div style={{ color: "rgba(255,255,255,0.3)" }}>Server running on port 3000</div>
           <div style={{ marginTop: "6px" }}><span style={{ color: "rgba(130,255,160,0.7)" }}>user@dev</span>:<span style={{ color: "rgba(130,180,255,0.7)" }}>~/project</span>$ voice-mirror</div>
-          <div style={{ color: "rgba(102,126,234,0.8)" }}>Voice Mirror v1.0.0 — Listening...</div>
+          <div style={{ color: "rgba(102,126,234,0.8)" }}>Voice Mirror — Listening...</div>
           <div style={{ marginTop: "4px", color: "rgba(255,255,255,0.3)" }}>Wake word: "Hey Claude"</div>
           <div style={{ marginTop: "4px", display: "flex", gap: "4px", alignItems: "center" }}>
             <span style={{ color: "rgba(74,222,128,0.8)" }}>●</span>
@@ -217,21 +217,27 @@ function LinuxDesktop() {
 }
 
 /* ── Install commands per OS ──────────────────────────────────── */
-const INSTALL_COMMANDS: Record<OS, { oneliner: string; label: string; shell: string }> = {
+/* Alpha reality: prebuilt installers aren't shipping yet, so the real path
+   is build-from-source. Windows is the full-feature target; macOS/Linux are
+   on the way. Keep these honest. */
+type Install =
+  | { available: true; oneliner: string; label: string; shell: string }
+  | { available: false; note: string };
+
+const INSTALL_COMMANDS: Record<OS, Install> = {
   windows: {
-    oneliner: "irm https://raw.githubusercontent.com/contextmirror/voice-mirror-electron/main/install.ps1 | iex",
+    available: true,
+    oneliner: "git clone https://github.com/contextmirror/voice-mirror && cd voice-mirror && npm install && npm run dev",
     label: "PowerShell",
     shell: "PS >",
   },
   macos: {
-    oneliner: "curl -fsSL https://raw.githubusercontent.com/contextmirror/voice-mirror-electron/main/install.sh | bash",
-    label: "Terminal",
-    shell: "$",
+    available: false,
+    note: "macOS is coming. Voice Mirror is Windows-first during alpha — join the Discord for the macOS build.",
   },
   linux: {
-    oneliner: "curl -fsSL https://raw.githubusercontent.com/contextmirror/voice-mirror-electron/main/install.sh | bash",
-    label: "Terminal",
-    shell: "$",
+    available: false,
+    note: "Linux is coming. Voice Mirror is Windows-first during alpha — join the Discord for the Linux build.",
   },
 };
 
@@ -330,41 +336,66 @@ export function DesktopPreview() {
 
       {/* Install command */}
       <div style={{ marginTop: "20px" }}>
-        <div
-          style={{
-            borderRadius: "12px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            background: "rgba(10,10,18,0.8)",
-            overflow: "hidden",
-          }}
-        >
-          {/* Shell header */}
+        {install.available ? (
+          <>
+            <div
+              style={{
+                borderRadius: "12px",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(10,10,18,0.8)",
+                overflow: "hidden",
+              }}
+            >
+              {/* Shell header */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "8px 16px",
+                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  background: "rgba(255,255,255,0.02)",
+                }}
+              >
+                <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.35)", fontWeight: 500 }}>
+                  {install.label}
+                </span>
+                <CopyButton text={install.oneliner} />
+              </div>
+              {/* Command */}
+              <div style={{ padding: "14px 16px", fontFamily: "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }}>
+                <code style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.7)", wordBreak: "break-all" }}>
+                  <span style={{ color: "rgba(130,255,160,0.7)", userSelect: "none" }}>{install.shell} </span>
+                  {install.oneliner}
+                </code>
+              </div>
+            </div>
+            <p style={{ textAlign: "center", marginTop: "10px", fontSize: "13px", color: "#78716c" }}>
+              Build from source today. One-click installers are coming during alpha —{" "}
+              <a href="https://discord.com/invite/JBpsSFB7EQ" style={{ color: "#fb923c", textDecoration: "none" }}>
+                join the Discord
+              </a>{" "}
+              for access.
+            </p>
+          </>
+        ) : (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 16px",
-              borderBottom: "1px solid rgba(255,255,255,0.05)",
-              background: "rgba(255,255,255,0.02)",
+              borderRadius: "12px",
+              border: "1px dashed rgba(255,255,255,0.12)",
+              background: "rgba(10,10,18,0.6)",
+              padding: "18px 20px",
+              textAlign: "center",
             }}
           >
-            <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.35)", fontWeight: 500 }}>
-              {install.label}
-            </span>
-            <CopyButton text={install.oneliner} />
+            <p style={{ fontSize: "13px", lineHeight: "1.6", color: "#a8a29e", margin: 0 }}>
+              {install.note}{" "}
+              <a href="https://discord.com/invite/JBpsSFB7EQ" style={{ color: "#fb923c", textDecoration: "none" }}>
+                Join the Discord →
+              </a>
+            </p>
           </div>
-          {/* Command */}
-          <div style={{ padding: "14px 16px", fontFamily: "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace" }}>
-            <code style={{ fontSize: "13px", lineHeight: "1.6", color: "rgba(255,255,255,0.7)", wordBreak: "break-all" }}>
-              <span style={{ color: "rgba(130,255,160,0.7)", userSelect: "none" }}>{install.shell} </span>
-              {install.oneliner}
-            </code>
-          </div>
-        </div>
-        <p style={{ textAlign: "center", marginTop: "10px", fontSize: "13px", color: "#78716c" }}>
-          One command to install. Available on Windows, macOS, and Linux.
-        </p>
+        )}
       </div>
     </div>
   );

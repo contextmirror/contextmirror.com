@@ -18,17 +18,17 @@ AI coding assistants are powerful, but they're trapped inside text boxes. You ha
 Voice Mirror is a transparent desktop overlay that combines:
 
 - **Voice Control** — Wake word activation, push-to-talk, or continuous conversation
+- **App Preview** — Build an app by voice and watch it render live; the AI sees and drives the running app
 - **Screen Awareness** — Captures your display and understands what you're looking at
 - **Terminal Power** — Spawns Claude Code internally for real command execution
 - **Browser Automation** — Full Chrome control via CDP
 - **Persistent Memory** — Three-tier memory system across sessions
-- **Voice Cloning** — Clone any voice from a 3-second audio clip
 
-The result? **A full AI agent for your entire computer**, controlled entirely by voice.
+The result? **A voice-native IDE** where your AI builds, sees, and drives what you make.
 
 ## What's Included
 
-Voice Mirror ships with 58 MCP tools across 8 groups, support for 75+ AI models via Claude Code, OpenCode, and Ollama, and a lightweight voice stack that runs entirely on CPU.
+Voice Mirror ships with 45 MCP tools across 5 groups, support for 75+ AI models via Claude Code, OpenCode, and Ollama, and a lightweight voice stack that runs entirely on CPU. It's Windows-first during alpha, with macOS and Linux on the way.
 
 ## Alpha Access
 
