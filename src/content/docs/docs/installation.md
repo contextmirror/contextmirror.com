@@ -3,19 +3,31 @@ title: Installation
 description: How to install and set up Voice Mirror
 ---
 
-# Installation
-
-Voice Mirror is in **alpha** and under active development. Right now the
-supported way to run it is to **build from source**.
-
-> **Prebuilt installers are coming during alpha.** They are not shipping yet —
-> the MCP binary isn't bundled, builds aren't code-signed, and auto-update isn't
-> functional. Join the [Discord](https://discord.com/invite/JBpsSFB7EQ) for alpha
-> access and to be notified when installers land.
+Voice Mirror is in **alpha** and under active development.
 
 Voice Mirror is **Windows-first** today: the see-and-drive App Preview,
 push-to-talk, and native-app driving currently run on Windows. macOS and Linux
 support is planned but not available yet.
+
+## Windows Installer (recommended)
+
+Download the latest installer from the
+[releases page](https://github.com/contextmirror/voice-mirror/releases/latest)
+and run it. Installed builds **auto-update** to new stable releases.
+
+> **The alpha installer is unsigned**, so Windows SmartScreen will warn you on
+> first run. Click **More info → Run anyway**. Code signing is planned.
+
+### Release channels
+
+| Channel | What you get | Where |
+|---------|--------------|-------|
+| **Stable** | Tagged releases with release notes; auto-updates | [Latest release](https://github.com/contextmirror/voice-mirror/releases/latest) |
+| **Nightly** | The dogfood channel — newest features, rougher edges | [Nightly build](https://github.com/contextmirror/voice-mirror/releases/tag/nightly) |
+
+Nightly is what we run ourselves day to day. If something breaks on nightly,
+tell us in the [Discord](https://discord.com/invite/JBpsSFB7EQ) — that's the
+point of the channel.
 
 ## Build from Source
 
@@ -52,8 +64,8 @@ npm run build
 ```
 
 This produces a platform-specific bundle in `src-tauri/target/release/bundle/`.
-Note that until installers are officially shipping, these builds lack a bundled
-MCP binary, code signing, and working auto-update.
+Unlike the shipped installer, local builds aren't code-signed and don't
+auto-update.
 
 ## Voice Engine
 

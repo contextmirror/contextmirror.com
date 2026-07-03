@@ -13,9 +13,25 @@
   --color-primary-800: #262626;
   --color-primary-900: #171717;
 
-  --color-accent-400: #f97316;
-  --color-accent-500: #ea580c;
-  --color-accent-600: #c2410c;
+  /* AI / primary accent — Voice Mirror blue (matches the orb) */
+  --color-accent-300: #93b8ff;
+  --color-accent-400: #5b9bff;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+
+  /* Voice / human accent — warm amber */
+  --color-voice-300: #ffd08a;
+  --color-voice-400: #ffb454;
+  --color-voice-500: #f59e0b;
+
+  /* Ink — cool near-black backdrop with a blue undertone */
+  --color-ink-950: #06080f;
+  --color-ink-900: #090c15;
+  --color-ink-850: #0d111c;
+  --color-ink-800: #121829;
+  --color-ink-700: #1a2238;
+  --color-ink-600: #25304b;
 
   /* Surface: warm dark grays */
   --color-surface-50: #fafaf9;
@@ -32,6 +48,7 @@
 
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 
@@ -118,8 +135,8 @@
 :root {
   --background: #0c0a09;
   --foreground: #fafaf9;
-  --primary: #ea580c;
-  --muted: rgba(234, 88, 12, 0.12);
+  --primary: #3b82f6;
+  --muted: rgba(59, 130, 246, 0.12);
   --border: rgba(255, 255, 255, 0.08);
 }
 
@@ -147,8 +164,8 @@ html[data-theme] .right-sidebar {
 /* Starlight theme overrides */
 :root {
   --sl-color-accent-low: #292524;
-  --sl-color-accent: #ea580c;
-  --sl-color-accent-high: #fed7aa;
+  --sl-color-accent: #3b82f6;
+  --sl-color-accent-high: #bfdbfe;
   --sl-color-white: #fafaf9;
   --sl-color-gray-1: #e7e5e4;
   --sl-color-gray-2: #a8a29e;
@@ -173,19 +190,19 @@ html[data-theme] .pagination-links a {
 }
 
 html[data-theme] .pagination-links a:hover {
-  background-color: rgba(234, 88, 12, 0.08) !important;
-  border-color: rgba(234, 88, 12, 0.3) !important;
-  box-shadow: 0 0 20px rgba(234, 88, 12, 0.15), 0 0 40px rgba(234, 88, 12, 0.05) !important;
+  background-color: rgba(59, 130, 246, 0.08) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), 0 0 40px rgba(59, 130, 246, 0.05) !important;
 }
 
 /* Sidebar nav links (docs) */
 html[data-theme] .sidebar-content a:hover {
-  color: #ea580c !important;
+  color: #3b82f6 !important;
 }
 
 /* Right sidebar "On this page" links */
 html[data-theme] .right-sidebar a:hover {
-  color: #ea580c !important;
+  color: #3b82f6 !important;
 }
 
 /* Site-wide bordered buttons and cards — orange glow on hover */
@@ -194,13 +211,13 @@ html[data-theme] .right-sidebar a:hover {
 }
 
 .glow-hover:hover {
-  border-color: rgba(234, 88, 12, 0.3) !important;
-  box-shadow: 0 0 20px rgba(234, 88, 12, 0.15), 0 0 40px rgba(234, 88, 12, 0.05);
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), 0 0 40px rgba(59, 130, 246, 0.05);
 }
 
 /* Footer links — orange text on hover */
 footer a:hover {
-  color: #ea580c !important;
+  color: #3b82f6 !important;
 }
 
 /* Inline code styling */
@@ -210,5 +227,97 @@ html[data-theme] :not(pre) > code {
   border-radius: 0.25rem;
   font-size: 0.875em;
   font-family: var(--sl-font-mono, 'JetBrains Mono', monospace);
-  color: var(--sl-color-accent, #ea580c);
+  color: var(--sl-color-accent, #3b82f6);
+}
+
+/* ============================================================
+   See & Drive — home page design system
+   blue = the AI / driving · amber = the human / voice
+   ============================================================ */
+
+/* Blueprint grid: the AI's-eye view of a surface */
+.blueprint-grid {
+  background-color: var(--color-ink-900, #090c15);
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Radial spotlight behind the hero */
+.ink-spot {
+  background:
+    radial-gradient(60% 50% at 70% 12%, rgba(59, 130, 246, 0.14), transparent 70%),
+    radial-gradient(50% 50% at 15% 0%, rgba(245, 158, 11, 0.06), transparent 70%);
+}
+
+/* @ref chip — the signature element the AI uses to see & drive any app */
+.ref-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.68rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  padding: 0.28em 0.5em;
+  border-radius: 0.3rem;
+  color: #93b8ff;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  white-space: nowrap;
+}
+.ref-chip--active {
+  color: #cfe0ff;
+  background: rgba(59, 130, 246, 0.22);
+  border-color: rgba(91, 155, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12), 0 0 18px rgba(59, 130, 246, 0.35);
+}
+
+/* AI cursor dot that sits on the active ref */
+.ai-cursor {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #5b9bff;
+  background: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.6);
+}
+
+/* Blinking caret for the voice transcript line */
+.vm-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.1em;
+  vertical-align: text-bottom;
+  background: var(--color-voice-400, #ffb454);
+  border-radius: 1px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes caretBlink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+@keyframes refIn { from { opacity: 0; transform: translateX(6px); } to { opacity: 1; transform: none; } }
+@keyframes cursorPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 14px rgba(59, 130, 246, 0.55); }
+  50%      { transform: scale(1.18); box-shadow: 0 0 22px rgba(59, 130, 246, 0.85); }
+}
+@keyframes softGlow {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+/* Scroll/load reveal — opt-in per element with inline animation-delay */
+.reveal { opacity: 0; animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .vm-caret { animation: caretBlink 1.1s step-end infinite; }
+  .ai-cursor { animation: cursorPulse 1.8s ease-in-out infinite; }
+  .live-dot { animation: softGlow 1.6s ease-in-out infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; animation: none; }
 }

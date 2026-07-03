@@ -3,8 +3,6 @@ title: Architecture
 description: Voice Mirror system design and components
 ---
 
-# Voice Mirror Architecture
-
 Voice Mirror is a **voice-native IDE**: you build real desktop apps and websites by voice, watch them render live in a sandbox **App Preview**, and the in-app AI can **see and drive** the running app — the same surface you watch. The north-star loop is **voice → build → see → fix**.
 
 It is a Tauri 2 desktop application with a Rust backend and a Svelte 5 frontend. It runs as a floating orb overlay that expands into a full VS Code-style workspace. Voice, screen awareness, terminal, and browser automation are supporting capabilities around the see-and-drive core.
@@ -94,16 +92,18 @@ The entire voice pipeline is native Rust — no Python backend.
 
 | Engine | Notes |
 |--------|-------|
-| Whisper (local, whisper.cpp) | Default; model size `base` (tiny/base/small downloadable) |
+| Whisper (local, whisper.cpp) | Default; model size `base` (tiny/base/small downloadable). Runs on CPU; optional CUDA GPU acceleration (`stt_use_gpu`) speeds up dictation and falls back to CPU when no GPU is available |
 
 **Text-to-Speech (TTS):**
 
 | Engine | Notes |
 |--------|-------|
-| Kokoro (local ONNX) | Default; runs on CPU |
+| Kokoro (local ONNX) | Default; runs locally on CPU, with GPU acceleration when available |
 | Edge TTS | Free Microsoft cloud voices; automatic fallback when the local Kokoro model is not present |
 
 **Voice Activity Detection (VAD):** Silero ONNX, with an energy-based fallback.
+
+The voice stack runs fully on CPU and offline by default; enabling GPU acceleration (CUDA) makes dictation and speech noticeably faster.
 
 **Wake word:** OpenWakeWord, default phrase "hey_claude".
 

@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import { OrbStateDemo } from '../components/orb-demo';
 ---
 
 <Base title="Voice Mirror — The Voice-Native IDE" description="Build apps by voice and watch your AI see and drive them in a live App Preview. A voice-native IDE with code editor, terminal, screen awareness, 45 MCP tools, and 75+ AI models via Claude Code, OpenCode, Ollama, and more. Windows-first, free and open source.">
@@ -64,18 +63,6 @@ import { OrbStateDemo } from '../components/orb-demo';
     </div>
   </section>
 
-  <!-- Orb States — Accurate Canvas Rendering -->
-  <section class="py-24 md:py-32">
-    <div class="mx-auto max-w-7xl px-6">
-      <div class="max-w-3xl mb-16">
-        <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-white">Always there, never in the way</h2>
-        <p class="mt-4 text-lg text-surface-400">A floating orb that lives on your desktop. It changes to show you exactly what's happening.</p>
-      </div>
-
-      <OrbStateDemo client:only="react" />
-    </div>
-  </section>
-
   <!-- Built by Voice -->
   <section class="py-24 border-t border-white/5 bg-surface-900/20">
     <div class="mx-auto max-w-7xl px-6">
@@ -94,8 +81,8 @@ import { OrbStateDemo } from '../components/orb-demo';
             <h3 class="text-lg font-semibold text-white mb-6">How it was built</h3>
             <div class="space-y-4">
               <div class="rounded-lg bg-surface-900/50 p-4">
-                <p class="text-surface-300 font-mono text-sm">"Build me a marketing page with an interactive orb demo"</p>
-                <p class="text-surface-500 mt-2 text-sm">→ Created the home page with floating orb component</p>
+                <p class="text-surface-300 font-mono text-sm">"Build me a marketing page with a live App Preview hero"</p>
+                <p class="text-surface-500 mt-2 text-sm">→ Created the home page with the see-and-drive hero</p>
               </div>
               <div class="rounded-lg bg-surface-900/50 p-4">
                 <p class="text-surface-300 font-mono text-sm">"Add a desktop preview that shows Windows, Mac, and Linux"</p>
@@ -189,9 +176,13 @@ import { OrbStateDemo } from '../components/orb-demo';
         Give your AI a voice
       </h2>
       <p class="mt-4 text-lg text-surface-400 max-w-2xl mx-auto">
-        Voice Mirror is free and open source, in active alpha on Windows. Build from source today, or join the Discord for alpha access.
+        Voice Mirror is free and open source, in active alpha on Windows. Download the installer, or join the Discord and build along.
       </p>
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://github.com/contextmirror/voice-mirror/releases/latest" class="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-3.5 text-base font-semibold text-white hover:bg-accent-400 transition-colors">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4"/></svg>
+          Download for Windows
+        </a>
         <a href="/docs/introduction/" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/10 px-8 py-3.5 text-base font-semibold text-surface-300 hover:bg-white/5 transition-all">
           Get Started
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>

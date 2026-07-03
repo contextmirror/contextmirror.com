@@ -3,35 +3,28 @@ title: Quick Start
 description: Get up and running with Voice Mirror in 5 minutes
 ---
 
-# Quick Start
-
 Voice Mirror is a voice-native IDE: you build real apps **by voice**, watch them render **live** in the **App Preview**, and the AI **sees and drives** the same running surface you do. The loop is simple — **voice → build → see → fix**.
 
 This guide gets you there in about 5 minutes.
 
 ## 1. Install
 
-Voice Mirror is in **alpha** and under active development. Build from source is the primary path today.
+Download the **Windows installer** from the
+[latest release](https://github.com/contextmirror/voice-mirror/releases/latest)
+and run it. Installed builds auto-update to new stable releases.
 
-> **Installers are coming during alpha.** Code-signed installers and auto-update aren't ready yet. [Join the Discord](https://discord.com/invite/JBpsSFB7EQ) for alpha access and build announcements.
+> The alpha installer is **unsigned** — Windows SmartScreen will warn on first
+> run. Click **More info → Run anyway**. Prefer the bleeding edge? There's a
+> [nightly channel](https://github.com/contextmirror/voice-mirror/releases/tag/nightly) too.
 
-Clone from the [contextmirror](https://github.com/contextmirror) org and install dependencies:
-
-```bash
-git clone https://github.com/contextmirror/voice-mirror
-cd voice-mirror
-npm install
-```
-
-The repo has a Svelte frontend (`src/`) and a Rust/Tauri backend (`src-tauri/`) at its root. See the [Installation guide](/docs/installation/) for prerequisites and full setup.
+Building from source (or on macOS/Linux)? See the
+[Installation guide](/docs/installation/) for prerequisites and full setup.
 
 ## 2. Launch
 
-```bash
-npm run dev
-```
-
-The floating orb appears on your desktop. There are three ways to interact:
+Launch Voice Mirror from the Start menu (or `npm run dev` from a source
+checkout). The floating orb appears on your desktop. There are three ways to
+interact:
 
 | Mode | How | Best For |
 |------|-----|----------|

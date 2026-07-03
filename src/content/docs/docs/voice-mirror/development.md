@@ -3,8 +3,6 @@ title: Development
 description: Setting up Voice Mirror for development
 ---
 
-# Development Setup
-
 Voice Mirror is in **alpha** and under active development. There are no signed
 installers yet, so the supported way to run it is to **build from source**.
 
@@ -50,7 +48,7 @@ which does three things:
 npm install          # Install frontend dependencies
 npm run dev          # Tauri dev mode + hot reload (rebuilds the MCP binary first)
 npm run build        # Production Tauri build (rebuilds the MCP binary in release)
-npm test             # Run all JS tests (node:test) — ~6,700 cases
+npm test             # Run all JS tests (node:test) — ~6,200 cases
 npm run test:rust    # Run Rust tests (cd src-tauri && cargo test)
 npm run test:all     # Run JS tests, then Rust tests
 npm run check        # Svelte type checking (svelte-check)
@@ -110,7 +108,7 @@ voice-mirror/
 │   ├── tauri.conf.json         # App config (frameless, transparent window)
 │   └── Cargo.toml              # Rust dependencies
 │
-├── test/                       # JavaScript tests (~6,700 cases)
+├── test/                       # JavaScript tests (~6,200 cases)
 │   ├── unit/                   # Direct-import tests for pure JS (.mjs)
 │   ├── stores/                 # Source-inspection tests for Svelte stores (.cjs)
 │   ├── api/                    # Source-inspection tests for API wrappers (.cjs)

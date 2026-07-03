@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # Windows artifacts
 nul
+
+# local agent/tool config
+.claude/
+.mcp.json

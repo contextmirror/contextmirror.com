@@ -3,8 +3,6 @@ title: MCP Tools Reference
 description: Complete reference for all MCP tools in Voice Mirror
 ---
 
-# MCP Tools Reference
-
 Voice Mirror provides 45 MCP (Model Context Protocol) tools across 5 dynamically loadable groups, enabling Claude Code, OpenCode, and other MCP-aware agents to interact with the system. The MCP server is a native Rust binary (`voice-mirror-mcp`) that communicates over stdio JSON-RPC.
 
 Tool groups load on demand. Two groups (**core** and **capture**) are always loaded; the rest load when the active profile enables them or when the AI mentions a relevant keyword. Groups that go unused for ~15 consecutive tool calls are automatically unloaded to reduce context size.

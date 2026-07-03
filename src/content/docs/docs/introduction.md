@@ -3,8 +3,6 @@ title: Introduction
 description: Voice Mirror is a voice-native IDE — build real apps by voice, watch them render live, and let the AI see and drive them.
 ---
 
-# Introduction to Voice Mirror
-
 **Voice Mirror** is a **voice-native IDE**, built by [Context Mirror](https://contextmirror.com). You describe what you want out loud, watch it get built, and see it render **live** in a sandbox **App Preview** — the same running surface that the in-app AI can **see and drive** for itself. It runs as a floating orb on your desktop and is powered by Tauri 2, Rust, and Svelte 5.
 
 The core loop is simple: **voice → build → see → fix.**
