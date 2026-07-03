@@ -1,4 +1,4 @@
-import { Home, Sparkles, Mic, BookOpen, Github } from "lucide-react"
+import { Home, Sparkles, Mic, AudioLines, BookOpen, Github } from "lucide-react"
 import { NavBar } from "@/components/ui/tubelight-navbar"
 
 function DiscordIcon({ size = 24 }: { size?: number; strokeWidth?: number }) {
@@ -13,6 +13,7 @@ const navItems = [
   { name: "Home", url: "/", icon: Home },
   { name: "Features", url: "/#features", icon: Sparkles },
   { name: "Voice Mirror", url: "/voice-mirror/", icon: Mic },
+  { name: "Yap", url: "/yap/", icon: AudioLines },
   { name: "Docs", url: "/docs/introduction/", icon: BookOpen },
   { name: "Discord", url: "https://discord.gg/JBpsSFB7EQ", icon: DiscordIcon },
   { name: "GitHub", url: "https://github.com/contextmirror", icon: Github },

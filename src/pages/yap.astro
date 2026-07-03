@@ -1,0 +1,271 @@
+---
+import Base from '../layouts/Base.astro';
+
+const models = [
+  'Parakeet TDT V3', 'Parakeet V2', 'Whisper Large v3', 'Whisper Large v3 Turbo',
+  'Distil-Large v3.5', 'Whisper Medium', 'Whisper Small', 'Canary 1B v2',
+  'Canary 180M Flash', 'Cohere', 'SenseVoice', 'GigaAM v3', 'Moonshine Base', 'Breeze-ASR',
+];
+---
+
+<Base title="Yap — Talk instead of type, anywhere on Windows. Local GPU dictation with offline AI cleanup.">
+
+  <!-- ───────────────────────── HERO ───────────────────────── -->
+  <section class="relative overflow-hidden blueprint-grid">
+    <div class="absolute inset-0 ink-spot pointer-events-none"></div>
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 pt-20 pb-24 md:pt-28 md:pb-28">
+      <div class="grid lg:grid-cols-[1.05fr_1fr] gap-14 lg:gap-12 items-center">
+
+        <!-- Left: thesis -->
+        <div class="reveal" style="animation-delay:0ms">
+          <div class="flex items-center gap-3 mb-6">
+            <img src="/yap/yap-icon.png" alt="Yap icon" class="h-9 w-9 rounded-xl" />
+            <span class="font-mono text-xs tracking-widest text-accent-400 uppercase">// yap — from the makers of voice mirror</span>
+          </div>
+
+          <h1 class="font-display font-bold tracking-tight text-white text-5xl md:text-6xl lg:text-[4.2rem] leading-[0.98]">
+            Talk instead of type.<br />
+            <span class="text-accent-400">Anywhere</span> on Windows.
+          </h1>
+
+          <p class="mt-8 text-lg text-surface-300 leading-relaxed max-w-xl">
+            Press a hotkey, speak, press again. Yap transcribes on your GPU —
+            <span class="text-white font-medium">locally, privately, free</span> — cleans up
+            the "um"s and grammar with AI, and types the result into whatever app you're in.
+          </p>
+
+          <div class="mt-8 font-mono text-sm text-surface-400 rounded-xl border border-white/8 bg-ink-850/60 px-5 py-4 leading-relaxed overflow-x-auto">
+            <span class="text-voice-400">🎤 your voice</span>
+            <span class="text-surface-600">→</span> Whisper / Parakeet <span class="text-accent-300">(local, on your GPU)</span><br />
+            <span class="text-surface-600 pl-6">→</span> AI cleanup <span class="text-accent-300">(local model, optional)</span>
+            <span class="text-surface-600">→</span> <span class="text-white">typed into the focused app</span>
+          </div>
+
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href="https://github.com/nayballs/Yap/releases/download/nightly/Yap-nightly-setup.exe" class="inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white hover:bg-accent-400 transition-colors shadow-[0_0_30px_-6px] shadow-accent-500/60">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4"/></svg>
+              Download for Windows
+            </a>
+            <a href="https://github.com/nayballs/Yap" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/12 px-6 py-3 text-sm font-medium text-surface-200 hover:bg-white/5 transition-all">
+              Star on GitHub
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-surface-500">
+            <span class="text-accent-400/90">● nightly</span>
+            <span>Windows</span>
+            <span>Free &amp; open source · MIT</span>
+            <span>Tauri 2 · Rust · Svelte 5</span>
+          </div>
+          <p class="mt-3 font-mono text-[11px] text-surface-600">
+            unsigned nightly build — SmartScreen: “More info” → “Run anyway” ·
+            <a href="https://github.com/nayballs/Yap/releases" class="hover:text-surface-400 underline underline-offset-2">all releases</a>
+          </p>
+        </div>
+
+        <!-- Right: the demo gif -->
+        <div class="reveal" style="animation-delay:140ms">
+          <div class="relative rounded-2xl border border-white/10 bg-ink-850/80 backdrop-blur shadow-2xl shadow-black/60 overflow-hidden">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent z-10"></div>
+            <img src="/yap/demo.gif" alt="Yap demo — dictating into Notepad, AI cleanup stripping the filler words" class="block w-full" />
+          </div>
+          <p class="mt-3 text-center font-mono text-[11px] text-surface-600">
+            real capture — filler words in, clean text out
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── THE TRADE-OFF ───────────────── -->
+  <section class="border-t border-white/5 bg-ink-900">
+    <div class="mx-auto max-w-7xl px-6 py-20 md:py-24">
+      <div class="max-w-2xl mb-12">
+        <div class="font-mono text-xs tracking-widest text-accent-400 uppercase mb-4">// why yap</div>
+        <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-white">
+          Refuse the choice.
+        </h2>
+        <p class="mt-5 text-lg text-surface-300 leading-relaxed">
+          Free dictation tools transcribe locally but dump out raw, unpunctuated text.
+          Polished apps charge ~$15/month and send your voice to the cloud. Yap does both
+          halves — locally.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-white/8">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-ink-850/80 text-left font-mono text-xs text-surface-400 uppercase tracking-wider">
+              <th class="px-6 py-4"></th>
+              <th class="px-6 py-4">Free / OSS tools</th>
+              <th class="px-6 py-4">Paid apps (~$15/mo)</th>
+              <th class="px-6 py-4 text-accent-300">Yap</th>
+            </tr>
+          </thead>
+          <tbody class="text-surface-300">
+            <tr class="border-t border-white/5">
+              <td class="px-6 py-4 text-white">Transcribes locally — voice never uploaded</td>
+              <td class="px-6 py-4">✅</td>
+              <td class="px-6 py-4 text-surface-500">❌ cloud</td>
+              <td class="px-6 py-4 bg-accent-500/5">✅</td>
+            </tr>
+            <tr class="border-t border-white/5">
+              <td class="px-6 py-4 text-white">AI cleanup — filler, punctuation, grammar</td>
+              <td class="px-6 py-4 text-surface-500">❌ raw text</td>
+              <td class="px-6 py-4">✅</td>
+              <td class="px-6 py-4 bg-accent-500/5">✅ even <span class="text-white font-medium">fully offline</span></td>
+            </tr>
+            <tr class="border-t border-white/5">
+              <td class="px-6 py-4 text-white">Price</td>
+              <td class="px-6 py-4">Free</td>
+              <td class="px-6 py-4 text-surface-500">~$15/mo</td>
+              <td class="px-6 py-4 bg-accent-500/5 text-white font-medium">Free, forever</td>
+            </tr>
+            <tr class="border-t border-white/5">
+              <td class="px-6 py-4 text-white">Open source</td>
+              <td class="px-6 py-4">✅</td>
+              <td class="px-6 py-4 text-surface-500">❌</td>
+              <td class="px-6 py-4 bg-accent-500/5">✅ MIT</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── FEATURES ───────────────── -->
+  <section class="relative blueprint-grid">
+    <div class="mx-auto max-w-7xl px-6 py-24 md:py-28">
+      <div class="max-w-2xl mb-14">
+        <div class="font-mono text-xs tracking-widest text-accent-400 uppercase mb-4">// small pill, deep toolbox</div>
+        <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-white">
+          More than a hotkey and a mic
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+        <div class="bg-ink-900 p-7">
+          <div class="font-mono text-xs text-surface-500 mb-3">gpu</div>
+          <h3 class="text-white font-semibold">Any GPU. No CUDA.</h3>
+          <p class="mt-2 text-sm text-surface-400 leading-relaxed">NVIDIA, AMD, or Intel — Vulkan + DirectML cover them all, with CPU fallback. 14 models downloaded in-app, SHA-256 verified.</p>
+        </div>
+        <div class="bg-ink-900 p-7">
+          <div class="font-mono text-xs text-surface-500 mb-3">cleanup</div>
+          <h3 class="text-white font-semibold">Offline AI cleanup</h3>
+          <p class="mt-2 text-sm text-surface-400 leading-relaxed">One click downloads a small local model that strips filler words, fixes grammar, and resolves "no wait, I meant…" — entirely on your PC. Or bring your own endpoint.</p>
+        </div>
+        <div class="bg-ink-900 p-7">
+          <div class="font-mono text-xs text-surface-500 mb-3">routing</div>
+          <h3 class="text-white font-semibold">Per-app profiles</h3>
+          <p class="mt-2 text-sm text-surface-400 leading-relaxed">Yap detects the app you're dictating into and applies the right cleanup style — terse for Slack, formal for email, code-aware for your IDE.</p>
+        </div>
+        <div class="bg-ink-900 p-7">
+          <div class="font-mono text-xs text-surface-500 mb-3">rewrite</div>
+          <h3 class="text-white font-semibold">Edit selection by voice</h3>
+          <p class="mt-2 text-sm text-surface-400 leading-relaxed">Select text anywhere, hit the edit hotkey, and say what to change — Yap grabs the selection and rewrites it from your spoken instruction.</p>
+        </div>
+        <div class="bg-ink-900 p-7">
+          <div class="font-mono text-xs text-surface-500 mb-3">dictionary</div>
+          <h3 class="text-white font-semibold">Correction dictionary</h3>
+          <p class="mt-2 text-sm text-surface-400 leading-relaxed">Names, jargon, product terms — teach Yap the words the models get wrong and it fixes them on every dictation.</p>
+        </div>
+        <div class="bg-ink-900 p-7">
+          <div class="font-mono text-xs text-surface-500 mb-3">stats</div>
+          <h3 class="text-white font-semibold">History &amp; streaks</h3>
+          <p class="mt-2 text-sm text-surface-400 leading-relaxed">Local-only history with words dictated, time saved vs typing, and a daily streak — clearable, cappable, never uploaded.</p>
+        </div>
+      </div>
+
+      <p class="mt-6 font-mono text-sm text-surface-500">
+        <span class="text-accent-400">$</span> also: toggle or push-to-talk · live partial transcripts · portable mode · signed auto-updates · translate-to-English
+      </p>
+    </div>
+  </section>
+
+  <!-- ───────────────── MODELS + SETTINGS ───────────────── -->
+  <section class="border-t border-white/5 bg-ink-900">
+    <div class="mx-auto max-w-7xl px-6 py-24 md:py-28">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-14 items-center">
+        <div>
+          <div class="font-mono text-xs tracking-widest text-accent-400 uppercase mb-4">// pick your engine</div>
+          <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-white">
+            14 models. One small installer.
+          </h2>
+          <p class="mt-5 text-lg text-surface-300 leading-relaxed">
+            From a 55&nbsp;MB Moonshine to Whisper Large v3 — including multilingual Parakeet,
+            NVIDIA Canary, and CJK-tuned SenseVoice. Downloaded in-app when you want them,
+            unloaded from VRAM when idle.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-2.5">
+            {models.map((m) => (
+              <span class="rounded-lg border border-white/8 bg-ink-850/60 px-3 py-1.5 text-xs text-surface-300 font-mono">{m}</span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <div class="relative rounded-2xl border border-white/10 bg-ink-850/60 overflow-hidden shadow-2xl shadow-black/60">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent"></div>
+            <img src="/yap/screenshot-settings.png" alt="Yap settings — audio devices, pill and overlay appearance, model picker" class="block w-full" loading="lazy" />
+          </div>
+          <div class="mt-4 flex justify-center">
+            <img src="/yap/screenshot-pill.png" alt="The Yap pill — a minimal floating capsule" class="h-12 rounded-full border border-white/10 shadow-lg shadow-black/50" loading="lazy" />
+          </div>
+          <p class="mt-3 text-center font-mono text-[11px] text-surface-600">
+            the whole UI: a pill, an overlay, and one settings window
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── FAMILY ───────────────── -->
+  <section class="relative blueprint-grid border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 py-20 md:py-24">
+      <div class="rounded-2xl border border-white/8 bg-ink-850/60 p-8 md:p-10 grid md:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <div class="font-mono text-xs tracking-widest text-accent-400 uppercase mb-3">// the context mirror family</div>
+          <h3 class="font-display text-2xl md:text-3xl font-bold text-white tracking-tight">
+            Yap dictates. Voice Mirror builds.
+          </h3>
+          <p class="mt-3 text-surface-300 leading-relaxed max-w-2xl">
+            Yap grew out of Voice Mirror's voice stack and turned dictation into its whole job.
+            When you're ready to build entire apps by voice — with an AI that sees and drives
+            them — that's <a href="/voice-mirror/" class="text-accent-300 hover:text-accent-200 underline underline-offset-2">Voice Mirror</a>.
+          </p>
+        </div>
+        <a href="/voice-mirror/" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/12 px-6 py-3 text-sm font-medium text-surface-200 hover:bg-white/5 transition-all whitespace-nowrap">
+          Meet Voice Mirror
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── CTA ───────────────── -->
+  <section class="relative overflow-hidden border-t border-white/5 bg-ink-900">
+    <div class="absolute inset-0 ink-spot pointer-events-none"></div>
+    <div class="relative mx-auto max-w-7xl px-6 py-24 text-center">
+      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight text-white">
+        Your voice never leaves your PC.
+      </h2>
+      <p class="mt-5 text-lg text-surface-300 max-w-xl mx-auto leading-relaxed">
+        Free, MIT-licensed, no accounts, no telemetry. Grab the nightly and start talking.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <a href="https://github.com/nayballs/Yap/releases/download/nightly/Yap-nightly-setup.exe" class="inline-flex items-center gap-2 rounded-full bg-accent-500 px-7 py-3.5 text-sm font-semibold text-white hover:bg-accent-400 transition-colors shadow-[0_0_30px_-6px] shadow-accent-500/60">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4"/></svg>
+          Download for Windows
+        </a>
+        <a href="https://github.com/nayballs/Yap" class="glow-hover inline-flex items-center gap-2 rounded-full border border-white/12 px-7 py-3.5 text-sm font-medium text-surface-200 hover:bg-white/5 transition-all">
+          Star on GitHub
+        </a>
+        <a href="https://discord.com/invite/JBpsSFB7EQ" class="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-medium text-surface-400 hover:text-white transition-colors">
+          Join the Discord
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>
