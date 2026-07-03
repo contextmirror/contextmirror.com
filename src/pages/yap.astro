@@ -65,14 +65,27 @@ const models = [
           </p>
         </div>
 
-        <!-- Right: the demo gif -->
+        <!-- Right: the promo video -->
         <div class="reveal" style="animation-delay:140ms">
           <div class="relative rounded-2xl border border-white/10 bg-ink-850/80 backdrop-blur shadow-2xl shadow-black/60 overflow-hidden">
             <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-500/40 to-transparent z-10"></div>
-            <img src="/yap/demo.gif" alt="Yap demo — dictating into Notepad, AI cleanup stripping the filler words" class="block w-full" />
+            <video
+              class="block w-full aspect-video"
+              src="/videos/yap-promo.mp4"
+              poster="/videos/yap-promo-poster.jpg"
+              autoplay
+              muted
+              loop
+              playsinline
+              controls
+              preload="metadata"
+            >
+              Your browser doesn't support embedded video —
+              <a href="/videos/yap-promo.mp4">download the promo</a> instead.
+            </video>
           </div>
           <p class="mt-3 text-center font-mono text-[11px] text-surface-600">
-            real capture — filler words in, clean text out
+            37 seconds — hotkey, cleanup, done · unmute for sound
           </p>
         </div>
       </div>
@@ -131,6 +144,27 @@ const models = [
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── REAL CAPTURE ───────────────── -->
+  <section class="relative blueprint-grid border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 py-16 md:py-20">
+      <div class="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-center">
+        <div>
+          <div class="font-mono text-xs tracking-widest text-accent-400 uppercase mb-4">// the real thing, unedited</div>
+          <h2 class="font-display text-2xl md:text-3xl font-bold tracking-tight text-white">
+            An actual capture, not a mockup
+          </h2>
+          <p class="mt-4 text-surface-300 leading-relaxed">
+            Dictating into Notepad with AI cleanup on — filler words in, clean text out.
+            Recorded straight off the screen.
+          </p>
+        </div>
+        <div class="relative rounded-2xl border border-white/10 bg-ink-850/60 overflow-hidden shadow-2xl shadow-black/60">
+          <img src="/yap/demo.gif" alt="Yap demo — dictating into Notepad, AI cleanup stripping the filler words" class="block w-full" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
